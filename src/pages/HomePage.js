@@ -1,9 +1,13 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
-const Homepage =()=>{
-    return(<div className="fs-1">
-        home page
-    </div>);
-}
+const Homepage = () => {
+  return (
+    <div>
+      <Navbar />
+      home page
+    </div>
+  );
+};
 
 export default Homepage;

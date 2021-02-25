@@ -4,15 +4,12 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav
-      class="navbar navbar-expand-lg navbar-light shadow p-3 mb-5"
+      className="navbar navbar-expand-lg navbar-light shadow p-3 mb-5"
       style={{ height: "80px", backgroundColor: "#ff4d4d" }}
     >
-      <div class="container-fluid">
-        <Link class="navbar-brand fs-1" to="/">
-          Gameroom
-        </Link>
+      <div className="container-fluid">
         {/* <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavAltMarkup"
@@ -20,20 +17,25 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button> */}
+        <div className="collapse navbar-collapse justify-content-start">
+          <Link className="navbar-brand fs-1" to="/">
+            Gameroom
+          </Link>
+          <Link className="nav-link active me-4" aria-current="page" href="#">
+            Home
+          </Link>
+          <Link className="nav-link" href="#">
+            Features
+          </Link>
+        </div>
         <div
-          class="collapse navbar-collapse justify-content-end"
+          className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
-          <div class="navbar-nav">
-            <a class="nav-link active me-4" aria-current="page" href="#">
-              Home
-            </a>
-            <a class="nav-link" href="#">
-              Features
-            </a>
-            <Link class="nav-link me-4 fs-4" to="/login">
+          <div className="navbar-nav">
+            <Link className="nav-link me-4 fs-4" to="/login">
               Login
             </Link>
           </div>

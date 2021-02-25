@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Form, Select, Header, Message } from "semantic-ui-react";
 import Navbar from "../components/Navbar";
 
@@ -8,6 +9,7 @@ const Signup = () => {
   const confirmPasswordRef = useRef();
   const nameRef = useRef();
   const [role, setRole] = useState({});
+  const history = useHistory()
 
   const handleSubmit = () => {
     console.log(role);
@@ -65,7 +67,17 @@ const Signup = () => {
             </Form.Field>
 
             <Button color="red" type="submit" className="w-100">
-              Submit
+              Signup
+            </Button>
+            <Button
+              className="w-100 mt-3"
+              basic
+              color="red"
+              onClick={() => {
+                history.push("/login");
+              }}
+            >
+              Already have an account?
             </Button>
           </Form>
         </div>
