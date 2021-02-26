@@ -6,20 +6,26 @@ import { Button, Dropdown } from "semantic-ui-react";
 import { auth } from "../firebase";
 
 const Navbar = () => {
-  const { isLoggedIn, setIsLoggedIn, setCurrentUser } = useUserContext();
+  const {
+    isLoggedIn,
+    setIsLoggedIn,
+    setCurrentUser,
+    currentUser,
+  } = useUserContext();
   const history = useHistory();
   const trigger = (
     <span>
-      <AccountCircleIcon fontSize="large" /> Hello, Bob
+      <AccountCircleIcon fontSize="large" /> Hello, {currentUser.displayName}
     </span>
   );
+  console.log(currentUser);
 
   const options = [
     {
       key: "user",
       text: (
         <span>
-          Signed in as <strong>Bob Smith</strong>
+          Signed in as <strong>{currentUser.displayName}</strong>
         </span>
       ),
       disabled: true,
