@@ -60,7 +60,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light shadow p-3 mb-5"
+      className="navbar navbar-expand-lg navbar-light shadow p-3 mb-1"
       style={{ height: "80px", backgroundColor: "#ff4d4d" }}
     >
       <div className="container-fluid justify-content-end">
