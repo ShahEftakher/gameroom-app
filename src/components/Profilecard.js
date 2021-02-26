@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Image, Button } from "semantic-ui-react";
 import { useUserContext } from "../context/UserContext";
 import EditIcon from "@material-ui/icons/Edit";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Avatar } from "@material-ui/core";
 
 const Profilecard = (props) => {
