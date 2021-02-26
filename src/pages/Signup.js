@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, Select, Header, Message } from "semantic-ui-react";
 import Navbar from "../components/Navbar";
+import { auth, db } from "../firebase";
+import { useUserContext } from "../context/UserContext";
 
 const Signup = () => {
   const emailRef = useRef();
@@ -9,10 +11,60 @@ const Signup = () => {
   const confirmPasswordRef = useRef();
   const nameRef = useRef();
   const [role, setRole] = useState({});
-  const history = useHistory()
+  const history = useHistory();
+  const [error, setError] = useState("");
+  const {
+    currentUser,
+    setCurrentUser,
+    isLoggedIn,
+    setIsLoggedIn,
+   } = useUserContext();
 
-  const handleSubmit = () => {
-    console.log(role);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      setError("Password does not match!");
+      return;
+    }
+    if (role !== "mentor" && role !== "student") {
+      setError("Please select a role");
+      return;
+    }
+    if (
+      emailRef.current.value &&
+      passwordRef.current.value &&
+      confirmPasswordRef.current.value &&
+      nameRef.current.value
+    ) {
+      auth
+        .createUserWithEmailAndPassword(
+          emailRef.current.value,
+          passwordRef.current.value
+        )
+        .then((userCreds) => {
+          userCreds.user.updateProfile({ displayName: nameRef.current.value });
+          db.collection("users")
+            .doc(userCreds.user.id)
+            .set({
+              name: nameRef.current.value,
+              email: emailRef.current.value,
+              role: role,
+            })
+            .then(() => {
+              setCurrentUser(userCreds.user);
+              setIsLoggedIn(true);
+              history.push("/");
+            })
+            .catch((err) => {
+              setError(err);
+            });
+        })
+        .catch((err) => {
+          setError(err);
+        });
+    } else {
+      setError("Fields cannot be empty");
+    }
   };
 
   const handleSelect = (event, data) => {
@@ -20,7 +72,7 @@ const Signup = () => {
   };
 
   const userRole = [
-    { key: "student", value: "Student", text: "Student" },
+    { key: "student", value: "student", text: "Student" },
     { key: "pro", value: "mentor", text: "Mentor" },
   ];
 
@@ -35,7 +87,7 @@ const Signup = () => {
           <Header className="" size="large" textAlign="center">
             Sign up
           </Header>
-          {/* {error ? <Message color="red">{JSON.stringify(error)}</Message> : ""} */}
+          {error ? <Message color="red">{JSON.stringify(error)}</Message> : ""}
           <Form onSubmit={handleSubmit}>
             <Form.Field>
               <label>Email</label>

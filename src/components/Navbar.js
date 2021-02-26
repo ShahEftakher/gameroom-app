@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useUserContext } from "../context/UserContext";
 
 const Navbar = () => {
+  const { isLoggedIn } = useUserContext();
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light shadow p-3 mb-5"
@@ -34,11 +37,19 @@ const Navbar = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
-          <div className="navbar-nav">
-            <Link className="nav-link me-4 fs-4" to="/login">
-              Login
-            </Link>
-          </div>
+          {isLoggedIn ? (
+            <div className="navbar-nav">
+              <Link className="nav-link me-4 fs-4" to="/profile">
+                Profile
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link className="nav-link me-4 fs-4" to="/login">
+                Login
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </nav>
