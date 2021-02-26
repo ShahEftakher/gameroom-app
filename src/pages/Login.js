@@ -25,7 +25,11 @@ const Login = () => {
         emailRef.current.value,
         passwordRef.current.value
       )
-      .then((userCreds) => {})
+      .then((userCreds) => {
+        setIsLoggedIn(true);
+        setCurrentUser(userCreds.user)
+        history.push("/")
+      })
       .catch((err) => {
         setError(err);
       });
@@ -36,7 +40,7 @@ const Login = () => {
       <Navbar />
       <div
         className="position-absolute top-50 start-50 translate-middle"
-        style={{ minWidth: "25%", minHeight: "35%" }}
+        style={{ minWidth: "25%", minHeight: "35%", maxWidth:"25%" }}
       >
         <div className="shadow p-3 mb-5 bg-body rounded ">
           <Header className="" size="large" textAlign="center">
