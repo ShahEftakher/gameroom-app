@@ -8,28 +8,35 @@ import Usercard from "../components/Usercard";
 
 const Homepage = () => {
   return (
-    <div className="mx-2">
+    <div>
       <Navbar />
-      <CarouselComp />
-      <div class="row p-2 mb-1">
-        <VideoContainer>
-          <Videocard />
-          <Videocard />
-          <Videocard />
-          <Videocard />
-        </VideoContainer>
-        <UserContainer >
-          <Usercard/>
-          <Usercard/>
-        </UserContainer>
-      </div>
-      <div class="row p-2 mt-1">
-        <VideoContainer>
-          <Videocard />
-          <Videocard />
-          <Videocard />
-          <Videocard />
-        </VideoContainer>
+      <div className="mx-3">
+        <CarouselComp />
+        <div class="row p-2 mb-1">
+          <VideoContainer>
+            <Videocard />
+            <Videocard />
+            <Videocard />
+            <Videocard />
+            <Videocard />
+            <Videocard />
+          </VideoContainer>
+          <UserContainer>
+            <Usercard />
+            <Usercard />
+          </UserContainer>
+        </div>
+        <div class="row p-2 mt-1">
+          <VideoContainer>
+            <Videocard />
+            <Videocard />
+            <Videocard />
+            <Videocard />
+            <Videocard />
+            <Videocard />
+            <Videocard />
+          </VideoContainer>
+        </div>
       </div>
     </div>
   );

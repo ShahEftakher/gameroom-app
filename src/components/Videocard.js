@@ -13,6 +13,7 @@ const Videocard = (props) => {
       onClick={() => {
         history.push("/video/id");
       }}
+      // style={{maxHeight:"25%", maxWidth:"25%"}}
     />
   );
 };
