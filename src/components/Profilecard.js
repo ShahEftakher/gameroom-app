@@ -3,9 +3,11 @@ import { Card, Image, Button } from "semantic-ui-react";
 import { useUserContext } from "../context/UserContext";
 import EditIcon from "@material-ui/icons/Edit";
 import { Avatar } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const Profilecard = (props) => {
   const { currentUser } = useUserContext();
+  const history = useHistory();
   return (
     <Card>
       <Card.Content className="d-flex justify-content-center">
@@ -36,7 +38,11 @@ const Profilecard = (props) => {
         </Card.Description>
       </Card.Content>
       <Card.Content className="d-flex justify-content-end">
-        <Button>
+        <Button
+          onClick={() => {
+            history.push("/editprofile");
+          }}
+        >
           <EditIcon />
         </Button>
       </Card.Content>

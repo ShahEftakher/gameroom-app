@@ -12,57 +12,61 @@ const Navbar = () => {
     setCurrentUser,
     currentUser,
   } = useUserContext();
-  const history = useHistory();
-  const trigger = (
-    <span>
-      <AccountCircleIcon fontSize="large" /> Hello, {currentUser.displayName}
-    </span>
-  );
   console.log(currentUser);
+  const history = useHistory();
+  if (isLoggedIn) {
+    var trigger = (
+      <span>
+        <AccountCircleIcon fontSize="large" /> Hello, {currentUser.displayName}
+      </span>
+    );
+    console.log(currentUser);
 
-  const options = [
-    {
-      key: "user",
-      text: (
-        <span>
-          Signed in as <strong>{currentUser.displayName}</strong>
-        </span>
-      ),
-      disabled: true,
-    },
-    <div className="p-2">
-      <Button
-        className="w-100 mb-1 me-1"
-        onClick={() => {
-          history.push("/profile");
-        }}
-      >
-        Profile
-      </Button>
-      <br />
-      <Button
-        className="w-100 mb-1 me-1"
-        onClick={() => {
-          history.push("/videos");
-        }}
-      >
-        Videos
-      </Button>
-      <br />
-      <Button
-        className="w-100 mb-1 me-1"
-        onClick={() => {
-          auth.signOut().then(() => {
-            setIsLoggedIn(false);
-            setCurrentUser({});
-          });
-        }}
-      >
-        Logout
-      </Button>
-      <br />
-    </div>,
-  ];
+    var options = [
+      {
+        key: "user",
+        text: (
+          <span>
+            Signed in as <strong>{currentUser.displayName}</strong>
+          </span>
+        ),
+        disabled: true,
+      },
+      <div className="p-2">
+        <Button
+          className="w-100 mb-1 me-1"
+          onClick={() => {
+            history.push("/profile");
+          }}
+        >
+          Profile
+        </Button>
+        <br />
+        <Button
+          className="w-100 mb-1 me-1"
+          onClick={() => {
+            history.push("/videos");
+          }}
+        >
+          Videos
+        </Button>
+        <br />
+        <Button
+          className="w-100 mb-1 me-1"
+          onClick={() => {
+            auth.signOut().then(() => {
+              setIsLoggedIn(false);
+              setCurrentUser({});
+              history.push("/");
+            });
+          }}
+        >
+          Logout
+        </Button>
+        <br />
+      </div>,
+    ];
+  }
 
   return (
     <nav

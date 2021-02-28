@@ -27,7 +27,7 @@ const Login = () => {
       )
       .then((userCreds) => {
         setIsLoggedIn(true);
-        setCurrentUser(userCreds.user)
+        // setCurrentUser(userCreds.user)
         history.push("/")
       })
       .catch((err) => {
