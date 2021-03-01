@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 
 const UserContext = React.createContext();
 
@@ -11,12 +11,37 @@ const UserContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+  const signup = (email, password, name, role) => {
+    return auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCreds) => {
+        userCreds.user.updateProfile({ displayName: name });
+        db.collection("users")
+          .doc(userCreds.user.id)
+          .set({
+            name: name,
+            email: email,
+            role: role,
+          })
+          .then(() => {
+            setIsLoggedIn(true);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
   };
 
   const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
+    return auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCreds) => {
+        setCurrentUser(userCreds);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const logout = () => {

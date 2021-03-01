@@ -14,11 +14,12 @@ const Signup = () => {
   const history = useHistory();
   const [error, setError] = useState("");
   const {
+    signup,
     currentUser,
     setCurrentUser,
     isLoggedIn,
     setIsLoggedIn,
-   } = useUserContext();
+  } = useUserContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,28 +37,14 @@ const Signup = () => {
       confirmPasswordRef.current.value &&
       nameRef.current.value
     ) {
-      auth
-        .createUserWithEmailAndPassword(
-          emailRef.current.value,
-          passwordRef.current.value
-        )
-        .then((userCreds) => {
-          userCreds.user.updateProfile({ displayName: nameRef.current.value });
-          db.collection("users")
-            .doc(userCreds.user.id)
-            .set({
-              name: nameRef.current.value,
-              email: emailRef.current.value,
-              role: role,
-            })
-            .then(() => {
-              setCurrentUser(userCreds.user);
-              setIsLoggedIn(true);
-              history.push("/");
-            })
-            .catch((err) => {
-              setError(err);
-            });
+      signup(
+        emailRef.current.value,
+        passwordRef.current.value,
+        nameRef.current.value,
+        role
+      )
+        .then(() => {
+          history.push("/");
         })
         .catch((err) => {
           setError(err);

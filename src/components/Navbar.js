@@ -7,6 +7,7 @@ import { auth } from "../firebase";
 
 const Navbar = () => {
   const {
+    logout,
     isLoggedIn,
     setIsLoggedIn,
     setCurrentUser,
@@ -54,11 +55,14 @@ const Navbar = () => {
         <Button
           className="w-100 mb-1 me-1"
           onClick={() => {
-            auth.signOut().then(() => {
-              setIsLoggedIn(false);
-              setCurrentUser({});
-              history.push("/");
-            });
+            logout()
+              .then(() => {
+                setIsLoggedIn(false);
+                history.push("/");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }}
         >
           Logout
