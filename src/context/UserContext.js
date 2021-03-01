@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { auth, db } from "../firebase";
 
 const UserContext = React.createContext();
@@ -60,6 +59,21 @@ const UserContextProvider = (props) => {
 
   const updatePassword = (password) => {
     return currentUser.updatePassword(password);
+  };
+
+  const getUserInfo = () => {
+    let userInfo;
+    db.collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((doc) => {
+        userInfo = doc.data();
+        console.log(userInfo);
+        setUserInfo(userInfo);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   useEffect(() => {

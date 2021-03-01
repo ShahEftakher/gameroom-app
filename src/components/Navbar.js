@@ -15,7 +15,7 @@ const Navbar = () => {
   } = useUserContext();
 
   const history = useHistory();
-  if (isLoggedIn) {
+  if (currentUser) {
     var trigger = (
       <span>
         <AccountCircleIcon fontSize="large" /> Hello, {currentUser.displayName}
@@ -103,7 +103,7 @@ const Navbar = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
-          {isLoggedIn ? (
+          {currentUser ? (
             <Dropdown className="me-5" trigger={trigger} options={options} />
           ) : (
             <div className="navbar-nav">
