@@ -3,17 +3,17 @@ import { Link, useHistory } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Button, Dropdown } from "semantic-ui-react";
-import { auth } from "../firebase";
 
 const Navbar = () => {
   const {
+    setUserInfo,
     logout,
     isLoggedIn,
     setIsLoggedIn,
     setCurrentUser,
     currentUser,
   } = useUserContext();
-  console.log(currentUser);
+
   const history = useHistory();
   if (isLoggedIn) {
     var trigger = (
@@ -21,7 +21,6 @@ const Navbar = () => {
         <AccountCircleIcon fontSize="large" /> Hello, {currentUser.displayName}
       </span>
     );
-    console.log(currentUser);
 
     var options = [
       {

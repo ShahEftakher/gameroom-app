@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { Form } from "semantic-ui-react";
 import { Button, Header, Message } from "semantic-ui-react";
 import Navbar from "../components/Navbar";
-import { auth } from "../firebase";
 import { useUserContext } from "../context/UserContext";
 
 const Login = () => {
@@ -11,13 +10,7 @@ const Login = () => {
   const passwordRef = useRef();
   const history = useHistory();
   const [error, setError] = useState();
-  const {
-    login,
-    currentUser,
-    setCurrentUser,
-    isLoggedIn,
-    setIsLoggedIn,
-  } = useUserContext();
+  const { login } = useUserContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();

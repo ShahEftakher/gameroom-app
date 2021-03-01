@@ -4,7 +4,7 @@ import { Avatar } from "@material-ui/core";
 import Navbar from "../components/Navbar";
 import { useUserContext } from "../context/UserContext";
 import { useHistory } from "react-router-dom";
-
+import { db } from "../firebase";
 
 const Editprofile = () => {
   const emailRef = useRef();
@@ -12,12 +12,25 @@ const Editprofile = () => {
   const confirmPasswordRef = useRef();
   const nameRef = useRef();
   const profilePic = useRef();
-  const {currentUser} = useUserContext();
-  const history =  useHistory();
+  const { currentUser, userInfo } = useUserContext();
+  const history = useHistory();
 
-  const handleSubmit=()=>{
+  const handleSubmit = () => {
+    db.collection("users")
+      .doc(userInfo.id)
+      .update({
+        name: nameRef.current.value,
+        email: emailRef.current.value,
+        bio: bioRef.current.value,
+      })
+      .then(() => {
+        history.push("/profile")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     history.push("/profile");
-  }
+  };
   return (
     <div>
       <Navbar />
@@ -39,15 +52,25 @@ const Editprofile = () => {
             </Form.Field>
             <Form.Field>
               <label>Email</label>
-              <input type="email" placeholder="Email" ref={emailRef} value={currentUser.email}/>
+              <input
+                type="email"
+                placeholder="Email"
+                ref={emailRef}
+                value={currentUser.email}
+              />
             </Form.Field>
             <Form.Field>
               <label>Name</label>
-              <input type="text" placeholder="Name" ref={nameRef} value={currentUser.displayName}/>
+              <input
+                type="text"
+                placeholder="Name"
+                ref={nameRef}
+                value={currentUser.displayName}
+              />
             </Form.Field>
             <Form.Field>
               <label>Bio</label>
-              <input type="text" placeholder="Bio" ref={bioRef}/>
+              <input type="text" placeholder="Bio" ref={bioRef} />
             </Form.Field>
             <Form.Field>
               <label>Confirm Password</label>

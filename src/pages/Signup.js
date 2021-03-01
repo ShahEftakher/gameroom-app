@@ -2,8 +2,8 @@ import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, Select, Header, Message } from "semantic-ui-react";
 import Navbar from "../components/Navbar";
-import { auth, db } from "../firebase";
 import { useUserContext } from "../context/UserContext";
+import { db } from "../firebase";
 
 const Signup = () => {
   const emailRef = useRef();
@@ -13,13 +13,7 @@ const Signup = () => {
   const [role, setRole] = useState({});
   const history = useHistory();
   const [error, setError] = useState("");
-  const {
-    signup,
-    currentUser,
-    setCurrentUser,
-    isLoggedIn,
-    setIsLoggedIn,
-  } = useUserContext();
+  const { signup, setUserInfo, setIsLoggedIn } = useUserContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,11 +37,42 @@ const Signup = () => {
         nameRef.current.value,
         role
       )
-        .then(() => {
+        .then((userCreds) => {
+          console.log(userCreds.user);
+          userCreds.user.updateProfile({ displayName: nameRef.current.value });
+          db.collection("users")
+            .doc(userCreds.user.uid)
+            .set({
+              uid: userCreds.user.uid,
+              name: nameRef.current.value,
+              email: emailRef.current.value,
+              role: role,
+              bio: "",
+            })
+            .then(() => {
+              (async function () {
+                let userInfo;
+                db.collection("users")
+                  .doc(userCreds.user.uid)
+                  .get()
+                  .then((doc) => {
+                    userInfo = doc.data();
+                    console.log(userInfo);
+                    setUserInfo(userInfo);
+                  })
+                  .catch((error) => {
+                    alert(error);
+                  });
+              })();
+              setIsLoggedIn(true);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
           history.push("/");
         })
         .catch((err) => {
-          setError(err);
+          console.log(err);
         });
     } else {
       setError("Fields cannot be empty");

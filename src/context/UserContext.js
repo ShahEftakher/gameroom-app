@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { auth, db } from "../firebase";
 
 const UserContext = React.createContext();
@@ -10,26 +11,10 @@ const useUserContext = () => {
 const UserContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
 
   const signup = (email, password, name, role) => {
-    return auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCreds) => {
-        userCreds.user.updateProfile({ displayName: name });
-        db.collection("users")
-          .doc(userCreds.user.id)
-          .set({
-            name: name,
-            email: email,
-            role: role,
-          })
-          .then(() => {
-            setIsLoggedIn(true);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
+    return auth.createUserWithEmailAndPassword(email, password);
   };
 
   const login = (email, password) => {
@@ -37,6 +22,20 @@ const UserContextProvider = (props) => {
       .signInWithEmailAndPassword(email, password)
       .then((userCreds) => {
         setCurrentUser(userCreds);
+        (async function () {
+          let userInfo;
+          db.collection("users")
+            .doc(userCreds.user.uid)
+            .get()
+            .then((doc) => {
+              userInfo = doc.data();
+              console.log(userInfo);
+              setUserInfo(userInfo);
+            })
+            .catch((error) => {
+              alert(error);
+            });
+        })();
         setIsLoggedIn(true);
       })
       .catch((err) => {
@@ -45,7 +44,14 @@ const UserContextProvider = (props) => {
   };
 
   const logout = () => {
-    return auth.signOut();
+    return auth
+      .signOut()
+      .then(() => {
+        setUserInfo({});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const updateEmail = (email) => {
@@ -75,6 +81,8 @@ const UserContextProvider = (props) => {
         logout,
         updateEmail,
         updatePassword,
+        userInfo,
+        setUserInfo,
       }}
     >
       {props.children}
