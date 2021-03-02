@@ -11,15 +11,13 @@ const Editprofile = () => {
   const bioRef = useRef();
   const nameRef = useRef();
   const profilePic = useRef();
-  const {
-    currentUser,
-    userInfo,
-    setCurrentUser,
-    setUserInfo,
-  } = useUserContext();
+  const { setCurrentUser, currentUser, userInfo } = useUserContext();
   const history = useHistory();
 
   const handleSubmit = () => {
+    if (!emailRef.current.value || !nameRef.current.value) {
+      return;
+    }
     console.log(userInfo); //just log the rest is a mess
     db.collection("users")
       .doc(currentUser.uid)
@@ -30,19 +28,20 @@ const Editprofile = () => {
       })
       .then(() => {
         //////////////////////////// point
+        console.log(nameRef.current.value, emailRef.current.value);
         auth.currentUser
           .updateProfile({
             displayName: nameRef.current.value,
-            email: emailRef.current.value,
           })
-          .then((userCreds) => {
-            console.log(userCreds)
-            setCurrentUser(userCreds.user);
+          .then(() => {
+            auth.currentUser.updateEmail(emailRef.current.value).then(() => {
+              setCurrentUser(auth.currentUser);
+              history.push("/profile");
+            });
           })
           .catch((err) => {
             console.log(err);
           });
-        history.push("/profile");
       })
       .catch((err) => {
         console.log(err);

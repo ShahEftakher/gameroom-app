@@ -56,9 +56,6 @@ const UserContextProvider = (props) => {
     return unSubscribe;
   }, []);
 
-  // useEffect(() => {
-  //   getUserInfo(currentUser.uid);
-  // }, []);
 
   return (
     <UserContext.Provider
