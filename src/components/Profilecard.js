@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 const Profilecard = (props) => {
   const { currentUser, userInfo } = useUserContext();
+  console.log(userInfo);
   const history = useHistory();
   return (
     <Card>

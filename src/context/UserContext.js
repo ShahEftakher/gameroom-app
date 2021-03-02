@@ -17,40 +17,11 @@ const UserContextProvider = (props) => {
   };
 
   const login = (email, password) => {
-    return auth
-      .signInWithEmailAndPassword(email, password)
-      .then((userCreds) => {
-        setCurrentUser(userCreds);
-        (async function () {
-          let userInfo;
-          db.collection("users")
-            .doc(userCreds.user.uid)
-            .get()
-            .then((doc) => {
-              userInfo = doc.data();
-              console.log(userInfo);
-              setUserInfo(userInfo);
-            })
-            .catch((error) => {
-              alert(error);
-            });
-        })();
-        setIsLoggedIn(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return auth.signInWithEmailAndPassword(email, password);
   };
 
   const logout = () => {
-    return auth
-      .signOut()
-      .then(() => {
-        setUserInfo({});
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return auth.signOut();
   };
 
   const updateEmail = (email) => {
@@ -61,10 +32,11 @@ const UserContextProvider = (props) => {
     return currentUser.updatePassword(password);
   };
 
-  const getUserInfo = () => {
+  const getUserInfo = (uid) => {
+    console.log(uid)
     let userInfo;
     db.collection("users")
-      .doc(currentUser.uid)
+      .doc(uid)
       .get()
       .then((doc) => {
         userInfo = doc.data();
@@ -79,9 +51,14 @@ const UserContextProvider = (props) => {
   useEffect(() => {
     const unSubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      getUserInfo(user.uid);
     });
     return unSubscribe;
   }, []);
+
+  // useEffect(() => {
+  //   getUserInfo(currentUser.uid);
+  // }, []);
 
   return (
     <UserContext.Provider

@@ -8,9 +8,7 @@ const Navbar = () => {
   const {
     setUserInfo,
     logout,
-    isLoggedIn,
     setIsLoggedIn,
-    setCurrentUser,
     currentUser,
   } = useUserContext();
 
@@ -57,6 +55,7 @@ const Navbar = () => {
             logout()
               .then(() => {
                 setIsLoggedIn(false);
+                setUserInfo({});
                 history.push("/");
               })
               .catch((err) => {

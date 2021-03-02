@@ -4,18 +4,21 @@ import { Form } from "semantic-ui-react";
 import { Button, Header, Message } from "semantic-ui-react";
 import Navbar from "../components/Navbar";
 import { useUserContext } from "../context/UserContext";
+import { db } from "../firebase";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const history = useHistory();
   const [error, setError] = useState();
-  const { login } = useUserContext();
+  const { login, setUserInfo, setIsLoggedIn } = useUserContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     login(emailRef.current.value, passwordRef.current.value)
       .then(() => {
+        /////////////////////////////////////
+        setIsLoggedIn(true);
         history.push("/");
       })
       .catch((err) => {

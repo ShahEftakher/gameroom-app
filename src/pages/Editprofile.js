@@ -20,7 +20,7 @@ const Editprofile = () => {
   const history = useHistory();
 
   const handleSubmit = () => {
-    console.log(userInfo);
+    console.log(userInfo); //just log the rest is a mess
     db.collection("users")
       .doc(currentUser.uid)
       .update({
@@ -29,31 +29,19 @@ const Editprofile = () => {
         bio: bioRef.current.value,
       })
       .then(() => {
-        (async function () {
-          let userInfo;
-          db.collection("users")
-            .doc(currentUser.uid)
-            .get()
-            .then((doc) => {
-              userInfo = doc.data();
-              console.log(userInfo);
-              setUserInfo(userInfo);
-              auth.currentUser
-                .updateProfile({
-                  displayName: nameRef.current.value,
-                  email: emailRef.current.value,
-                })
-                .then((userCreds) => {
-                  setCurrentUser(userCreds.user);
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            })
-            .catch((error) => {
-              alert(error);
-            });
-        })();
+        //////////////////////////// point
+        auth.currentUser
+          .updateProfile({
+            displayName: nameRef.current.value,
+            email: emailRef.current.value,
+          })
+          .then((userCreds) => {
+            console.log(userCreds)
+            setCurrentUser(userCreds.user);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         history.push("/profile");
       })
       .catch((err) => {
@@ -98,7 +86,12 @@ const Editprofile = () => {
             </Form.Field>
             <Form.Field>
               <label>Bio</label>
-              <input type="text" ref={bioRef} defaultValue={userInfo.bio} />
+              <input
+                type="text"
+                ref={bioRef}
+                defaultValue={userInfo.bio}
+              />{" "}
+              {/** initially displaying, later on breaking*/}
             </Form.Field>
             <Button color="red" type="submit" className="w-100">
               Update

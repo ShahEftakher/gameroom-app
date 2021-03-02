@@ -13,7 +13,7 @@ const Signup = () => {
   const [role, setRole] = useState({});
   const history = useHistory();
   const [error, setError] = useState("");
-  const { signup, setUserInfo, setIsLoggedIn } = useUserContext();
+  const { signup, setUserInfo, setIsLoggedIn, login } = useUserContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,21 +50,7 @@ const Signup = () => {
               bio: "",
             })
             .then(() => {
-              (async function () {
-                let userInfo;
-                db.collection("users")
-                  .doc(userCreds.user.uid)
-                  .get()
-                  .then((doc) => {
-                    userInfo = doc.data();
-                    console.log(userInfo);
-                    setUserInfo(userInfo);
-                  })
-                  .catch((error) => {
-                    alert(error);
-                  });
-              })();
-              setIsLoggedIn(true);
+              ////////////////////////////////////////////
             })
             .catch((err) => {
               console.log(err);
