@@ -7,13 +7,13 @@ import { useHistory } from "react-router-dom";
 
 const Profilecard = (props) => {
   const { currentUser, userInfo } = useUserContext();
-  console.log(userInfo);
+  console.log(currentUser);
   const history = useHistory();
   return (
     <Card>
       <Card.Content className="d-flex justify-content-center">
         <Avatar
-          src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
+          src={currentUser.photoURL}
           alt=""
           style={{ height: "100%", width: "100%" }}
         ></Avatar>

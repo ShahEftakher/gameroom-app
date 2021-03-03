@@ -1,37 +1,51 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Form, Select, Header, Message } from "semantic-ui-react";
 import { Avatar } from "@material-ui/core";
 import Navbar from "../components/Navbar";
 import { useUserContext } from "../context/UserContext";
 import { useHistory } from "react-router-dom";
-import { auth, db } from "../firebase";
+import { auth, db, storage } from "../firebase";
 
 const Editprofile = () => {
   const emailRef = useRef();
   const bioRef = useRef();
   const nameRef = useRef();
-  const profilePic = useRef();
-  const { setCurrentUser, currentUser, userInfo } = useUserContext();
+  const {
+    setCurrentUser,
+    currentUser,
+    userInfo,
+    setUserInfo,
+  } = useUserContext();
   const history = useHistory();
+  const [imageURL, setImageURL] = useState(null);
+  const handleChange = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = storage.ref();
+    const fileRef = storageRef.child(file.name);
+    await fileRef.put(file);
+    const fileUrl = await fileRef.getDownloadURL();
+    setImageURL(fileUrl);
+  };
 
   const handleSubmit = () => {
     if (!emailRef.current.value || !nameRef.current.value) {
       return;
     }
-    console.log(userInfo); //just log the rest is a mess
+    //just log the rest is a mess
     db.collection("users")
       .doc(currentUser.uid)
       .update({
         name: nameRef.current.value,
         email: emailRef.current.value,
         bio: bioRef.current.value,
+        profileImage: imageURL,
       })
       .then(() => {
         //////////////////////////// point
-        console.log(nameRef.current.value, emailRef.current.value);
         auth.currentUser
           .updateProfile({
             displayName: nameRef.current.value,
+            photoURL: imageURL,
           })
           .then(() => {
             auth.currentUser.updateEmail(emailRef.current.value).then(() => {
@@ -58,13 +72,13 @@ const Editprofile = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Field className="d-flex justify-content-center">
               <Avatar
-                src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
+                src={currentUser.photoURL}
                 alt=""
                 style={{ height: "50%", width: "50%" }}
               ></Avatar>
             </Form.Field>
             <Form.Field>
-              <input type="file" ref={profilePic}></input>
+              <input type="file" onChange={handleChange} />
             </Form.Field>
             <Form.Field>
               <label>Email</label>
