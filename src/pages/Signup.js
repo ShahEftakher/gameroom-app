@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Button, Form, Select, Header, Message } from "semantic-ui-react";
-import Navbar from "../components/Navbar";
-import { useUserContext } from "../context/UserContext";
-import { db } from "../firebase";
+import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button, Form, Select, Header, Message } from 'semantic-ui-react';
+import Navbar from '../components/Navbar';
+import { useUserContext } from '../context/UserContext';
+import { db } from '../firebase';
 
 const Signup = () => {
   const emailRef = useRef();
@@ -12,17 +12,17 @@ const Signup = () => {
   const nameRef = useRef();
   const [role, setRole] = useState({});
   const history = useHistory();
-  const [error, setError] = useState("");
-  const { signup, setUserInfo, setIsLoggedIn, login } = useUserContext();
+  const [error, setError] = useState('');
+  const { signup } = useUserContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setError("Password does not match!");
+      setError('Password does not match!');
       return;
     }
-    if (role !== "mentor" && role !== "student") {
-      setError("Please select a role");
+    if (role !== 'mentor' && role !== 'student') {
+      setError('Please select a role');
       return;
     }
     if (
@@ -43,30 +43,28 @@ const Signup = () => {
             displayName: nameRef.current.value,
             gb: role,
           });
-          db.collection("users")
+          db.collection('users')
             .doc(userCreds.user.uid)
             .set({
               uid: userCreds.user.uid,
               name: nameRef.current.value,
               email: emailRef.current.value,
               role: role,
-              bio: "",
+              bio: '',
             })
-            .then(() => {
-              ////////////////////////////////////////////
-            })
+            .then(() => {})
             .catch((err) => {
               console.log(err);
             });
           setTimeout(() => {
-            history.push("/");
+            history.push('/');
           }, 5000);
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      setError("Fields cannot be empty");
+      setError('Fields cannot be empty');
     }
   };
 
@@ -75,8 +73,8 @@ const Signup = () => {
   };
 
   const userRole = [
-    { key: "student", value: "student", text: "Student" },
-    { key: "pro", value: "mentor", text: "Mentor" },
+    { key: 'student', value: 'student', text: 'Student' },
+    { key: 'pro', value: 'mentor', text: 'Mentor' },
   ];
 
   return (
@@ -84,13 +82,13 @@ const Signup = () => {
       <Navbar />
       <div
         className="position-absolute top-50 start-50 translate-middle"
-        style={{ minWidth: "25%" }}
+        style={{ minWidth: '25%' }}
       >
         <div className="shadow p-3 mb-5 bg-body rounded ">
           <Header className="" size="large" textAlign="center">
             Sign up
           </Header>
-          {error ? <Message color="red">{JSON.stringify(error)}</Message> : ""}
+          {error ? <Message color="red">{JSON.stringify(error)}</Message> : ''}
           <Form onSubmit={handleSubmit}>
             <Form.Field>
               <label>Email</label>
@@ -129,7 +127,7 @@ const Signup = () => {
               basic
               color="red"
               onClick={() => {
-                history.push("/login");
+                history.push('/login');
               }}
             >
               Already have an account?

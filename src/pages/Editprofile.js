@@ -75,7 +75,7 @@ const Editprofile = () => {
               <Avatar
                 src={currentUser.photoURL}
                 alt=""
-                style={{ height: "50%", width: "50%" }}
+                style={{ height: "250px", width: "250px" }}
               ></Avatar>
             </Form.Field>
             <Form.Field>
