@@ -18,14 +18,14 @@ const Profilecard = (props) => {
           style={{ height: "100%", width: "100%" }}
         ></Avatar>
       </Card.Content>
-      <Card.Content>
+      <Card.Content className="p-2">
         <Card.Header>{currentUser.displayName}</Card.Header>
         <Card.Meta>
-          <span className="date">Joined in 2015</span>
+          <span className="mt-3">{userInfo.role}</span>
         </Card.Meta>
         <Card.Description>Email: {currentUser.email}</Card.Description>
       </Card.Content>
-      <Card.Content>
+      <Card.Content className="p-2">
         <Card.Description>Bio: {userInfo.bio}</Card.Description>
       </Card.Content>
       <Card.Content className="d-flex justify-content-end">

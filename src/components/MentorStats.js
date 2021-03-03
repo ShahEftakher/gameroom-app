@@ -31,12 +31,6 @@ const MentorStats = () => {
           </div>
         </div>
       </div>
-      <VideoContainer>
-        <Videocard />
-        <Videocard />
-        <Videocard />
-        <Videocard />
-      </VideoContainer>
     </div>
   );
 };

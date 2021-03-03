@@ -39,7 +39,10 @@ const Signup = () => {
       )
         .then((userCreds) => {
           console.log(userCreds.user);
-          userCreds.user.updateProfile({ displayName: nameRef.current.value });
+          userCreds.user.updateProfile({
+            displayName: nameRef.current.value,
+            gb: role,
+          });
           db.collection("users")
             .doc(userCreds.user.uid)
             .set({
@@ -55,7 +58,9 @@ const Signup = () => {
             .catch((err) => {
               console.log(err);
             });
-          history.push("/");
+          setTimeout(() => {
+            history.push("/");
+          }, 5000);
         })
         .catch((err) => {
           console.log(err);

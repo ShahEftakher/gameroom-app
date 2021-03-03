@@ -2,8 +2,10 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Profilecard from "../components/Profilecard";
 import MentorStats from "../components/MentorStats";
+import { useUserContext } from "../context/UserContext";
 
 const Profilepage = () => {
+  const { userInfo } = useUserContext();
   return (
     <div>
       <Navbar />
@@ -15,9 +17,11 @@ const Profilepage = () => {
           <div class="col-sm-9">
             <div class="row">
               {/*condtionally rendered based on role*/}
-              <MentorStats />
+              {userInfo.role === "mentor" ? <MentorStats /> : ""}
             </div>
+            {userInfo.role === "mentor" ? <button>Click meh</button> : ""}
           </div>
+          <div></div>
         </div>
       </div>
     </div>

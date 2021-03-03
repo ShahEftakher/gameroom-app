@@ -10,6 +10,7 @@ const Navbar = () => {
     logout,
     setIsLoggedIn,
     currentUser,
+    userInfo,
   } = useUserContext();
 
   const history = useHistory();
@@ -49,6 +50,21 @@ const Navbar = () => {
           Videos
         </Button>
         <br />
+        {userInfo.role === "mentor" ? (
+          <>
+            <Button
+              className="w-100 mb-1 me-1"
+              onClick={() => {
+                history.push("/upload");
+              }}
+            >
+              Upload Video
+            </Button>
+            <br />
+          </>
+        ) : (
+          ""
+        )}
         <Button
           className="w-100 mb-1 me-1"
           onClick={() => {
