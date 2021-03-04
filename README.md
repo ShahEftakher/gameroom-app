@@ -9,7 +9,7 @@
 - Upload video for mentors
 - Video preview on video upload
 - Retrieve video 
-- watch video
+- Watch video
 
 ## Available Scripts
 
