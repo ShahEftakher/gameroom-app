@@ -12,16 +12,24 @@ const Uploadvideo = () => {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const { currentUser } = useUserContext();
+
+  const [loading, setLoading] = useState({});
+  const [disabled, setDisable] = useState({});
+
+  const history = useHistory();
+
   const handleChange = async (e) => {
+    setDisable({ disabled: 'disabled' });
+    setLoading({ loading: 'loading' });
     const videoFile = e.target.files[0];
     const storageRef = storage.ref();
     const videoRef = storageRef.child(videoFile.name);
     await videoRef.put(videoFile);
     const fileUrl = await videoRef.getDownloadURL();
     setVideoUrl(fileUrl);
+    setDisable({});
+    setLoading({});
   };
-
-  const history = useHistory();
 
   const handleSelect = (event, data) => {
     setCategory(data.value);
@@ -71,7 +79,7 @@ const Uploadvideo = () => {
         <div class="d-flex justify-content-center mt-5 mb-5">
           <Form onSubmit={handleSubmit}>
             <Form.Field>
-              <input type="file" onChange={handleChange} accept='video/*'/>
+              <input type="file" onChange={handleChange} accept="video/*" />
             </Form.Field>
             <Form.Field>
               <label>Video Title</label>
@@ -94,7 +102,13 @@ const Uploadvideo = () => {
               />
             </Form.Field>
             <Form.Field>
-              <input className="w-100 btn btn-primary" type="submit" value='Upload'/>
+              <input
+                className="w-100 btn btn-primary"
+                type="submit"
+                value="Upload"
+                {...loading}
+                {...disabled}
+              />
             </Form.Field>
           </Form>
         </div>

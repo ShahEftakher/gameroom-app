@@ -17,11 +17,13 @@ const Editprofile = () => {
     setUserInfo,
   } = useUserContext();
   const [loading, setLoading] = useState({});
+  const [disabled, setDisable] = useState({});
   const history = useHistory();
   const [imageURL, setImageURL] = useState(null);
 
   //handle file upload
   const handleChange = async (e) => {
+    setDisable({ disabled: 'disabled' });
     setLoading({ loading: 'loading' });
     const file = e.target.files[0];
     const storageRef = storage.ref();
@@ -29,6 +31,8 @@ const Editprofile = () => {
     await fileRef.put(file);
     const fileUrl = await fileRef.getDownloadURL();
     setImageURL(fileUrl);
+    setLoading({});
+    setDisable({});
   };
 
   const handleSubmit = () => {
@@ -116,7 +120,13 @@ const Editprofile = () => {
               />{' '}
               {/** initially displaying, later on breaking*/}
             </Form.Field>
-            <Button color="red" type="submit" className="w-100" {...loading}>
+            <Button
+              color="red"
+              type="submit"
+              className="w-100"
+              {...loading}
+              {...disabled}
+            >
               Update
             </Button>
           </Form>

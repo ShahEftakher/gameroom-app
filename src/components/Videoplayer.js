@@ -31,7 +31,7 @@ function VideoPlayer(props) {
   const classes = useStyles();
   const [state, setState] = useState({
     playing: true,
-    muted: true,
+    muted: false,
     volume: 0.5,
     played: 0,
     seeking: false,

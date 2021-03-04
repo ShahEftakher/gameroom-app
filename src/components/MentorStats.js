@@ -1,6 +1,4 @@
 import React from "react";
-import VideoContainer from "../components/VideoContainer";
-import Videocard from "../components/Videocard";
 
 const MentorStats = () => {
   return (

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { auth, db } from "../firebase";
+import React, { useContext, useEffect, useState } from 'react';
+import { auth, db } from '../firebase';
 
 const UserContext = React.createContext();
 
@@ -33,14 +33,13 @@ const UserContextProvider = (props) => {
   };
 
   const getUserInfo = (uid) => {
-    console.log(uid)
+    console.log(uid);
     let userInfo;
-    db.collection("users")
+    db.collection('users')
       .doc(uid)
       .get()
       .then((doc) => {
         userInfo = doc.data();
-        console.log(userInfo);
         setUserInfo(userInfo);
       })
       .catch((error) => {
@@ -55,7 +54,6 @@ const UserContextProvider = (props) => {
     });
     return unSubscribe;
   }, []);
-
 
   return (
     <UserContext.Provider
