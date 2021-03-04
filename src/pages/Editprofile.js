@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
-import { Button, Form, Select, Header, Message } from "semantic-ui-react";
-import { Avatar } from "@material-ui/core";
-import Navbar from "../components/Navbar";
-import { useUserContext } from "../context/UserContext";
-import { useHistory } from "react-router-dom";
-import { auth, db, storage } from "../firebase";
+import React, { useEffect, useRef, useState } from 'react';
+import { Button, Form, Select, Header, Message } from 'semantic-ui-react';
+import { Avatar } from '@material-ui/core';
+import Navbar from '../components/Navbar';
+import { useUserContext } from '../context/UserContext';
+import { useHistory } from 'react-router-dom';
+import { auth, db, storage } from '../firebase';
 
 const Editprofile = () => {
   const emailRef = useRef();
@@ -16,9 +16,13 @@ const Editprofile = () => {
     userInfo,
     setUserInfo,
   } = useUserContext();
+  const [loading, setLoading] = useState({});
   const history = useHistory();
   const [imageURL, setImageURL] = useState(null);
+
+  //handle file upload
   const handleChange = async (e) => {
+    setLoading({ loading: 'loading' });
     const file = e.target.files[0];
     const storageRef = storage.ref();
     const fileRef = storageRef.child(file.name);
@@ -33,7 +37,7 @@ const Editprofile = () => {
       return;
     }
     //just log the rest is a mess
-    db.collection("users")
+    db.collection('users')
       .doc(currentUser.uid)
       .update({
         name: nameRef.current.value,
@@ -51,7 +55,7 @@ const Editprofile = () => {
           .then(() => {
             auth.currentUser.updateEmail(emailRef.current.value).then(() => {
               setCurrentUser(auth.currentUser);
-              history.push("/profile");
+              history.push('/profile');
             });
           })
           .catch((err) => {
@@ -62,6 +66,11 @@ const Editprofile = () => {
         console.log(err);
       });
   };
+
+  useEffect(() => {
+    setImageURL(currentUser.photoURL);
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -73,13 +82,13 @@ const Editprofile = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Field className="d-flex justify-content-center">
               <Avatar
-                src={currentUser.photoURL}
+                src={imageURL}
                 alt=""
-                style={{ height: "250px", width: "250px" }}
+                style={{ height: '250px', width: '250px' }}
               ></Avatar>
             </Form.Field>
             <Form.Field>
-              <input type="file" onChange={handleChange} />
+              <input type="file" onChange={handleChange} accept="image/*" />
             </Form.Field>
             <Form.Field>
               <label>Email</label>
@@ -104,10 +113,10 @@ const Editprofile = () => {
                 type="text"
                 ref={bioRef}
                 defaultValue={userInfo.bio}
-              />{" "}
+              />{' '}
               {/** initially displaying, later on breaking*/}
             </Form.Field>
-            <Button color="red" type="submit" className="w-100">
+            <Button color="red" type="submit" className="w-100" {...loading}>
               Update
             </Button>
           </Form>

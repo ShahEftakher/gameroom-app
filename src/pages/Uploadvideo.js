@@ -71,7 +71,7 @@ const Uploadvideo = () => {
         <div class="d-flex justify-content-center mt-5 mb-5">
           <Form onSubmit={handleSubmit}>
             <Form.Field>
-              <input type="file" onChange={handleChange} />
+              <input type="file" onChange={handleChange} accept='video/*'/>
             </Form.Field>
             <Form.Field>
               <label>Video Title</label>
