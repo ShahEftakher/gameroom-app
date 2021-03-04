@@ -8,7 +8,8 @@
 - Update profile image
 - Upload video for mentors
 - Video preview on video upload
-- Retrieve video watch video
+- Retrieve video 
+- watch video
 
 ## Available Scripts
 
