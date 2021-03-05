@@ -75,7 +75,7 @@ const Uploadvideo = () => {
     <div>
       <Navbar />
       <div class="row align-items-center">
-        {videoUrl ? <Videoplayer url={videoUrl} /> : ''}
+        {videoUrl ? <Videoplayer url={videoUrl} className="w-75 h-75"/> : ''}
         <div class="d-flex justify-content-center mt-5 mb-5">
           <Form onSubmit={handleSubmit}>
             <Form.Field>

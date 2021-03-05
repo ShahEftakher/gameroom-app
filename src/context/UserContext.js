@@ -33,7 +33,6 @@ const UserContextProvider = (props) => {
   };
 
   const getUserInfo = (uid) => {
-    console.log(uid);
     let userInfo;
     db.collection('users')
       .doc(uid)

@@ -1,11 +1,35 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import Profilecard from "../components/Profilecard";
-import MentorStats from "../components/MentorStats";
-import { useUserContext } from "../context/UserContext";
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Profilecard from '../components/Profilecard';
+import MentorStats from '../components/MentorStats';
+import { useUserContext } from '../context/UserContext';
+import { db } from '../firebase';
+import VideoContainer from '../components/VideoContainer';
 
 const Profilepage = () => {
-  const { userInfo } = useUserContext();
+  const { userInfo, currentUser } = useUserContext();
+  const [videos, setVideos] = useState([]);
+
+  const getVideosUser = async (uid) => {
+    console.log(uid)
+    db.collection('videos')
+      .where('uid', '==', uid)
+      .onSnapshot((querySnapshot) => {
+        let tempVideos = [];
+        querySnapshot.forEach((doc) => {
+          tempVideos.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setVideos(tempVideos);
+      });
+  };
+
+  useEffect(() => {
+    getVideosUser(userInfo.uid);
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -17,9 +41,13 @@ const Profilepage = () => {
           <div class="col-sm-9">
             <div class="row">
               {/*condtionally rendered based on role*/}
-              {userInfo.role === "mentor" ? <MentorStats /> : ""}
+              {userInfo.role === 'mentor' ? <MentorStats /> : ''}
             </div>
-            {userInfo.role === "mentor" ? <button>Click meh</button> : ""}
+            {userInfo.role === 'mentor' ? (
+              <VideoContainer videos={videos} />
+            ) : (
+              ''
+            )}
           </div>
           <div></div>
         </div>

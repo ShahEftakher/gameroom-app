@@ -7,7 +7,6 @@ import Loginmodal from './Loginmodal';
 const Videocard = ({ data, id }) => {
   const history = useHistory();
   const { currentUser } = useUserContext();
-  console.log(data);
   return (
     <Link to={{ pathname: '/video/' + id, video: data }}>
       <Card
