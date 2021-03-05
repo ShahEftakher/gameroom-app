@@ -8,7 +8,7 @@ const Videocard = ({ data, id }) => {
   const history = useHistory();
   const { currentUser } = useUserContext();
   return (
-    <Link to={{ pathname: '/video/' + id, video: data }}>
+    <Link to={'/video/' + id}>
       <Card
         color="red"
         image={data.videoUrl}

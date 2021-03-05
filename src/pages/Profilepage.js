@@ -2,32 +2,34 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Profilecard from '../components/Profilecard';
 import MentorStats from '../components/MentorStats';
-import { useUserContext } from '../context/UserContext';
 import { db } from '../firebase';
 import VideoContainer from '../components/VideoContainer';
 
 const Profilepage = () => {
-  const { userInfo, currentUser } = useUserContext();
   const [videos, setVideos] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
-  const getVideosUser = async (uid) => {
-    console.log(uid)
-    db.collection('videos')
-      .where('uid', '==', uid)
-      .onSnapshot((querySnapshot) => {
-        let tempVideos = [];
-        querySnapshot.forEach((doc) => {
-          tempVideos.push({
-            id: doc.id,
-            data: doc.data(),
-          });
-        });
-        setVideos(tempVideos);
-      });
+  const getUserInfo = () => {
+    let getInfo = JSON.parse(localStorage.getItem('userid'));
+    console.log(typeof getInfo);
+    console.log(getInfo);
+    setUserInfo({new: 'mew new'});
+    console.log(userInfo);
+  };
+
+  const getVideosUser = async () => {
+    console.log(userInfo.uid);
+  };
+
+  const showUID = () => {
+    console.log(userInfo.uid);
   };
 
   useEffect(() => {
-    getVideosUser(userInfo.uid);
+    getUserInfo();
+    console.log(userInfo);
+    getVideosUser();
+    showUID();
   }, []);
 
   return (
@@ -36,7 +38,7 @@ const Profilepage = () => {
       <div class="container mt-4">
         <div class="row">
           <div class="col-sm-3">
-            <Profilecard />
+            <Profilecard userInfo={userInfo} />
           </div>
           <div class="col-sm-9">
             <div class="row">

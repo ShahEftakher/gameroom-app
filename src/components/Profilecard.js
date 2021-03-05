@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card, Image, Button } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 import { useUserContext } from '../context/UserContext';
 import EditIcon from '@material-ui/icons/Edit';
 import { Avatar } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
-const Profilecard = (props) => {
-  const { currentUser, userInfo } = useUserContext();
+const Profilecard = ({ userInfo }) => {
+  const { currentUser } = useUserContext();
   const history = useHistory();
   return (
     <Card>
@@ -14,7 +14,7 @@ const Profilecard = (props) => {
         <Avatar
           src={currentUser.photoURL}
           alt=""
-          style={{ height: '250px', width: '250px' }}
+          style={{ height: '20vh', width: '20vh' }}
         ></Avatar>
       </Card.Content>
       <Card.Content className="p-2">

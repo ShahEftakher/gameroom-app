@@ -36,11 +36,10 @@ const Editprofile = () => {
   };
 
   const handleSubmit = () => {
-    //////////////////use debouncer here
     if (!emailRef.current.value || !nameRef.current.value) {
       return;
     }
-    //just log the rest is a mess
+
     db.collection('users')
       .doc(currentUser.uid)
       .update({
@@ -50,7 +49,6 @@ const Editprofile = () => {
         profileImage: imageURL,
       })
       .then(() => {
-        //////////////////////////// point
         auth.currentUser
           .updateProfile({
             displayName: nameRef.current.value,
