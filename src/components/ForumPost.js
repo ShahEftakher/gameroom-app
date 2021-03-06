@@ -7,10 +7,10 @@ const ForumPost = ({ id, post }) => {
   return (
     <div className="mx-5 mt-3 mb-3">
       <Link
-        style={{ textDecoration: 'none', color: 'black' }}
+        style={{ textDecoration: 'none', color: 'red' }}
         to={'forum/post/' + id}
       >
-        <Card fluid color="orange" header="Option 2">
+        <Card fluid color="orange" header="Option 2" onClick={()=>{}}>
           <h6 className="card-header d-flex">
             <Avatar src={post.avatarImg} sizes="large" />
             <p className="ms-2 fs-3">{post.name}</p>

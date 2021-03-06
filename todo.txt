@@ -1,23 +1,32 @@
+======================
+        left
+======================
 
-
-view count
-video by view
-video by like
 video thumbnail
 catergories
 Upload status bar
 Uploading(status)
 all videos page
-sort by like
-sort by view
-forgot password
-password update
-add like initial video upload
+
+filter video
+
 
 forum:
+upvote???
 
-comment
-upvote
+
+=======================
+        By today
+=======================
+add like initial video upload
+sort by like
+sort by newest
+video by like
+video by newest
+-----------------------
+forgot password
+password update
+**** fix profile page ****
 
 
 =======================
@@ -30,3 +39,4 @@ comment
 
 forum:
 post 
+comment

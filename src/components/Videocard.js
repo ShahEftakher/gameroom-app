@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Card } from 'semantic-ui-react';
-import { useUserContext } from '../context/UserContext';
-import Loginmodal from './Loginmodal';
+
 
 const Videocard = ({ data, id }) => {
-  const history = useHistory();
-  const { currentUser } = useUserContext();
   return (
-    <Link to={'/video/' + id}>
+    <Link to={'/video/' + id} className="mx-2 my-2">
       <Card
         color="red"
         image={data.videoUrl}

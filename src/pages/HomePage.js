@@ -10,7 +10,7 @@ import { db } from '../firebase';
 
 const Homepage = () => {
   const [videos, setVideos] = useState([]);
-  const loadVideos = async() => {
+  const loadVideos = async () => {
     db.collection('videos').onSnapshot((querysnapShot) => {
       let tempVideos = [];
       querysnapShot.forEach((doc) => {
@@ -27,7 +27,6 @@ const Homepage = () => {
     loadVideos();
   }, []);
 
-
   return (
     <div>
       <Navbar />
@@ -39,6 +38,7 @@ const Homepage = () => {
           </div>
         </div>
         <div class="row p-2 mt-1">
+          <VideoContainer videos={videos} />
         </div>
       </div>
     </div>
