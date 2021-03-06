@@ -67,13 +67,15 @@ const VideoComments = ({ videoId }) => {
           return <VideoComment comment={comment} />;
         })}
         <Form className="mt-5" onSubmit={handleSubmit}>
-          <Form.TextArea onChange={handleChange} />
-          <Button
-            content="Add Comment"
-            labelPosition="left"
-            icon="edit"
-            primary
-          />
+          <Form.TextArea onChange={handleChange} placeholder="Add a comment" />
+          <Form.Field className="d-flex justify-content-end">
+            <Button
+              content="Add Comment"
+              labelPosition="left"
+              icon="edit"
+              primary
+            />
+          </Form.Field>
         </Form>
       </Comment.Group>
     </div>

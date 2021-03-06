@@ -12,6 +12,7 @@ filter video
 
 
 forum:
+forum color different??
 upvote???
 
 
@@ -27,6 +28,9 @@ video by newest
 forgot password
 password update
 **** fix profile page ****
+- ** send useinfo req every update
+- ** call for video after that
+- ** on querySnapshot video from db for profile 
 
 
 =======================
