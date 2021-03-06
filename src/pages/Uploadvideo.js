@@ -83,6 +83,11 @@ const Uploadvideo = () => {
         {videoUrl ? <Videoplayer url={videoUrl} className='w-75 h-75' /> : ''}
         <div class='d-flex justify-content-center mt-5 mb-5'>
           <Form onSubmit={handleSubmit}>
+            {progress === 100 ? (
+              <>Video added</>
+            ) : progress != null ? (
+              <>Adding the video...</>
+            ) : null}
             {progress && (
               <div className='mb-4'>
                 <ProgressBar progress={progress} />
