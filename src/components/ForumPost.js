@@ -13,7 +13,7 @@ const ForumPost = ({ id, post }) => {
         <Card fluid color="orange" header="Option 2">
           <h6 className="card-header d-flex">
             <Avatar src={post.avatarImg} sizes="large" />
-            <h5 className="ms-2 display-6">{post.name}</h5>
+            <p className="ms-2 fs-3">{post.name}</p>
           </h6>
           <div className="card shadow-sm p-3 bg-body rounded">
             <div className="card-body">

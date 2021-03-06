@@ -15,7 +15,7 @@ password update
 add like initial video upload
 
 forum:
-post 
+
 comment
 upvote
 
@@ -27,3 +27,6 @@ upvote
 like
 like count
 comment
+
+forum:
+post 

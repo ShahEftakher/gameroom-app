@@ -65,7 +65,7 @@ const Forumpage = () => {
       {currentUser ? (
         <div className="mb-4 d-flex justify-content-center">
           <Form
-            className="w-25 border mt-3 shadow p-3 mb-5 bg-body rounded"
+            className="w-50 border mt-3 shadow p-3 mb-5 bg-body rounded"
             onSubmit={handleSubmit}
           >
             <h6 className="display-6">Ask</h6>

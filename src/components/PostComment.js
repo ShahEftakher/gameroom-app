@@ -1,21 +1,33 @@
 import React from 'react';
-import { Comment,Header } from 'semantic-ui-react';
+import { Button, Comment } from 'semantic-ui-react';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-const VideoComment = ({ comment }) => {
+const PostComment = ({ comment }) => {
   return (
-    <div>
-      <Comment className="mt-3 p-1">
-        <Comment.Avatar as="a" src={/*comment.imageUrl*/} />
-        <Comment.Content>
-          <Comment.Author as="a">{/*comment.author*/}</Comment.Author>
-          <Comment.Metadata>
-            <span>Today at 5:42PM</span>
-          </Comment.Metadata>
-          <Comment.Text>{/*comment.body*/}</Comment.Text>
-        </Comment.Content>
-      </Comment>
+    <div className="container border mt-3 shadow-sm p-3 mb-3 bg-body rounded">
+      <div className="row">
+        <Comment className="mt-3 p-1 col-sm-8">
+          <Comment.Avatar as="a" src={comment.imageUrl} />
+          <Comment.Content>
+            <Comment.Author as="a">{comment.author}</Comment.Author>
+            <Comment.Metadata>
+              <span>{comment.created_time}</span>
+            </Comment.Metadata>
+            <Comment.Text>{comment.body}</Comment.Text>
+          </Comment.Content>
+        </Comment>
+        <div className="col-sm-4 mt-4">
+          <Button
+            type="button"
+            color="red"
+            style={{ marginLeft: '55%' }}
+          >
+            <FavoriteBorderIcon />
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default VideoComment;
+export default PostComment;
