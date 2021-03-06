@@ -10,6 +10,9 @@
 - Video preview on video upload
 - Retrieve video 
 - Watch video
+- Like videos
+- Like count
+- comment
 
 ## Available Scripts
 

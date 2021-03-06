@@ -1,6 +1,5 @@
-comment
-like
-like count
+
+
 view count
 video by view
 video by like
@@ -18,3 +17,12 @@ forum:
 post 
 comment
 upvote
+
+
+=======================
+        done
+=======================
+
+like
+like count
+comment
