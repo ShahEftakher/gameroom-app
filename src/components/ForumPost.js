@@ -3,26 +3,27 @@ import { Link } from 'react-router-dom';
 import { Avatar } from '@material-ui/core';
 import { Card } from 'semantic-ui-react';
 
-const ForumPost = () => {
+const ForumPost = ({ id, post }) => {
   return (
-    <Link style={{ textDecoration: 'none', color: 'black' }} to={'forum/post/454'}>
-      <div className="mx-5 mt-3">
+    <div className="mx-5 mt-3 mb-3">
+      <Link
+        style={{ textDecoration: 'none', color: 'black' }}
+        to={'forum/post/' + id}
+      >
         <Card fluid color="orange" header="Option 2">
-          <h5 className="card-header d-flex">
-            <Avatar
-              src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-              sizes="large"
-            />
-            <h6 className="ms-2 display-6">me</h6>
-          </h5>
+          <h6 className="card-header d-flex">
+            <Avatar src={post.avatarImg} sizes="large" />
+            <h5 className="ms-2 display-6">{post.name}</h5>
+          </h6>
           <div className="card shadow-sm p-3 bg-body rounded">
             <div className="card-body">
-              <h3 className="card-title display-6">Special title treatment</h3>
+              <p>{post.created_time}</p>
+              <h3 className="card-title display-6">{post.body}</h3>
             </div>
           </div>
         </Card>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

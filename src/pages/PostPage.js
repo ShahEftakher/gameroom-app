@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar } from '@material-ui/core';
 import { Card } from 'semantic-ui-react';
 import Navbar from '../components/Navbar';
+import PostComments from '../components/PostComments';
 
 const PostPage = () => {
   return (
@@ -23,6 +24,7 @@ const PostPage = () => {
           </div>
         </Card>
       </div>
+      <PostComments />
     </div>
   );
 };
