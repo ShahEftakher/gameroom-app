@@ -1,0 +1,20 @@
+comment
+like
+like count
+view count
+video by view
+video by like
+video thumbnail
+catergories
+Upload status bar
+Uploading(status)
+all videos page
+sort by like
+sort by view
+forgot password
+password update
+
+forum:
+post 
+comment
+upvote
