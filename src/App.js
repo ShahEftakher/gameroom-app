@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { useUserContext } from './context/UserContext';
 import Editprofile from './pages/Editprofile';
 import Forumpage from './pages/Forumpage';
+import Gallerypage from './pages/Gallerypage';
 import Homepage from './pages/HomePage';
 import Login from './pages/Login';
 import PostPage from './pages/PostPage';
@@ -20,6 +21,7 @@ function App() {
       <Route path={'/signup'} exact component={Signup} />
       <Route path={'/'} exact component={Homepage} />
       <Route path={'/forum'} exact component={Forumpage} />
+      <Route path={'/gallery'} exact component={Gallerypage} />
       <Route path={'/forum/post/:id'} exact component={PostPage} />
       <Privateroute path={'/profile'} exact component={Profilepage} />
       <Privateroute path={'/editprofile'} exact component={Editprofile} />

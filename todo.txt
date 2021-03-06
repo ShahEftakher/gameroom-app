@@ -5,8 +5,6 @@ video by view
 video by like
 video thumbnail
 catergories
-Upload status bar - done
-Uploading(status) - done
 all videos page
 sort by like
 sort by view
@@ -27,3 +25,5 @@ upvote
 like
 like count
 comment
+Upload status bar
+Uploading(status)

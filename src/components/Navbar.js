@@ -112,6 +112,9 @@ const Navbar = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
+          <Link className="navbar-brand fs-4 me-5" to='/gallery'>
+            Gallery
+          </Link>
           <Link className="navbar-brand fs-4 me-5" to='/forum'>
             Forum
           </Link>
