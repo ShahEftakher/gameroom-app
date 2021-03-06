@@ -4,7 +4,7 @@ import { useUserContext } from '../context/UserContext';
 import { db } from '../firebase';
 import VideoComment from './VideoComment';
 
-const Comments = ({ videoId }) => {
+const VideoComments = ({ videoId }) => {
   const { currentUser } = useUserContext();
   const [newComment, setNewComment] = useState('');
   const [comments, setComments] = useState([]);
@@ -80,4 +80,4 @@ const Comments = ({ videoId }) => {
   );
 };
 
-export default Comments;
+export default VideoComments;

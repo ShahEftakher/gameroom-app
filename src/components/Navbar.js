@@ -1,8 +1,8 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useUserContext } from "../context/UserContext";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { Button, Dropdown } from "semantic-ui-react";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useUserContext } from '../context/UserContext';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Button, Dropdown, Header } from 'semantic-ui-react';
 
 const Navbar = () => {
   const {
@@ -23,7 +23,7 @@ const Navbar = () => {
 
     var options = [
       {
-        key: "user",
+        key: 'user',
         text: (
           <span>
             Signed in as <strong>{currentUser.displayName}</strong>
@@ -35,7 +35,7 @@ const Navbar = () => {
         <Button
           className="w-100 mb-1 me-1"
           onClick={() => {
-            history.push("/profile");
+            history.push('/profile');
           }}
         >
           Profile
@@ -44,18 +44,18 @@ const Navbar = () => {
         <Button
           className="w-100 mb-1 me-1"
           onClick={() => {
-            history.push("/videos");
+            history.push('/videos');
           }}
         >
           Videos
         </Button>
         <br />
-        {userInfo.role === "mentor" ? (
+        {userInfo.role === 'mentor' ? (
           <>
             <Button
               className="w-100 mb-1 me-1"
               onClick={() => {
-                history.push("/upload");
+                history.push('/upload');
               }}
             >
               Upload Video
@@ -63,7 +63,7 @@ const Navbar = () => {
             <br />
           </>
         ) : (
-          ""
+          ''
         )}
         <Button
           className="w-100 mb-1 me-1"
@@ -72,7 +72,7 @@ const Navbar = () => {
               .then(() => {
                 setIsLoggedIn(false);
                 setUserInfo({});
-                history.push("/");
+                history.push('/');
               })
               .catch((err) => {
                 console.log(err);
@@ -89,7 +89,7 @@ const Navbar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light shadow p-3 mb-1"
-      style={{ height: "80px", backgroundColor: "#ff4d4d" }}
+      style={{ height: '80px', backgroundColor: '#ff4d4d' }}
     >
       <div className="container-fluid justify-content-end">
         <button
@@ -107,17 +107,14 @@ const Navbar = () => {
           <Link className="navbar-brand fs-1" to="/">
             Gameroom
           </Link>
-          {/* <Link className="nav-link active me-4" aria-current="page" href="#">
-            Home
-          </Link>
-          <Link className="nav-link" href="#">
-            Features
-          </Link> */}
         </div>
         <div
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
+          <Link className="navbar-brand fs-4 me-5" to='/forum'>
+            Forum
+          </Link>
           {currentUser ? (
             <Dropdown className="me-5" trigger={trigger} options={options} />
           ) : (

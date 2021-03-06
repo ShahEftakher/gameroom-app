@@ -12,6 +12,7 @@ sort by like
 sort by view
 forgot password
 password update
+add like initial video upload
 
 forum:
 post 
