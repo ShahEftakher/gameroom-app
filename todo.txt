@@ -1,6 +1,5 @@
-comment
-like
-like count
+
+
 view count
 video by view
 video by like
@@ -13,8 +12,18 @@ sort by like
 sort by view
 forgot password
 password update
+add like initial video upload
 
 forum:
 post 
 comment
 upvote
+
+
+=======================
+        done
+=======================
+
+like
+like count
+comment

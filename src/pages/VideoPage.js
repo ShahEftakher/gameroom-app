@@ -4,6 +4,7 @@ import VideoPlayer from '../components/Videoplayer';
 import { Button } from 'semantic-ui-react';
 import { db } from '../firebase';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import VideoComments from '../components/VideoComments';
 
 const VideoPage = (props) => {
   const videoId = window.location.pathname.split('/').pop();
@@ -51,10 +52,6 @@ const VideoPage = (props) => {
     getVideo(videoId);
   }, []);
 
-  useEffect(() => {
-    setTimeout(addView, 10000);
-  });
-
   return (
     <div className="">
       <Navbar />
@@ -74,6 +71,9 @@ const VideoPage = (props) => {
           {likes} {'       '}
           <FavoriteBorderIcon />
         </button>
+        <div className="p-1 mt-4">
+          <VideoComments videoId={videoId} videoData={videoData} />
+        </div>
       </div>
     </div>
   );
