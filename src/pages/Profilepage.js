@@ -4,16 +4,12 @@ import Profilecard from '../components/Profilecard';
 import MentorStats from '../components/MentorStats';
 import { db } from '../firebase';
 import VideoContainer from '../components/VideoContainer';
-import { useUserContext } from '../context/UserContext';
 
 const Profilepage = () => {
   const userId = window.location.pathname.split('/').pop();
   console.log(userId);
   const [videos, setVideos] = useState([]);
   const [userInfo, setUserInfo] = useState({});
-  const [role, setRole] = useState('');
-  const { currentUser } = useUserContext();
-  console.log(currentUser);
 
   const getUserInfo = async (id) => {
     let user;
@@ -31,19 +27,24 @@ const Profilepage = () => {
       });
   };
 
-  const getRole = () => {
-    let temp_role = localStorage.getItem('userid');
-    console.log(temp_role);
-    setRole(temp_role);
-  };
-
   const getVideosUser = async () => {
-    console.log(userInfo.uid);
+    let temp_video = [];
+    db.collection('videos')
+      .where('uid', '==', userId)
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          temp_video.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setVideos(temp_video);
+      });
   };
 
   useEffect(() => {
     getUserInfo(userId);
-    getRole();
+    getVideosUser();
   }, []);
 
   return (
@@ -58,7 +59,7 @@ const Profilepage = () => {
               {userInfo.role === 'mentor' ? <MentorStats /> : ''}
             </div>
             {userInfo.role === 'mentor' ? (
-              <VideoContainer videos={videos} />
+              <VideoContainer videos={videos} title={'My videos'} />
             ) : (
               ''
             )}

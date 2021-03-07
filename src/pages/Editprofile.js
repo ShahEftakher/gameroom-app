@@ -14,7 +14,6 @@ const Editprofile = () => {
     setCurrentUser,
     currentUser,
     userInfo,
-    setUserInfo,
   } = useUserContext();
   const [loading, setLoading] = useState({});
   const [disabled, setDisable] = useState({});
