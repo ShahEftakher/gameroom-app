@@ -2,11 +2,11 @@
         left
 ======================
 video thumbnail
-catergories
+
 mentor stats
 toastify
 
-filter video
+
 
 forum:
 forum color different??
@@ -15,9 +15,7 @@ upvote???
 =======================
         By today
 =======================
-add like initial video upload
-sort by like
-sort by newest
+
 -----------------------
 view User profile
 
@@ -42,6 +40,11 @@ password update
 Upload status bar
 Uploading(status)
 all videos page
+catergories
+add like initial video upload
+sort by like
+sort by newest
+filter video
 
 **** fix profile page ****
 - ** send useinfo req every update

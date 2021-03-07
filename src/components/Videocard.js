@@ -7,7 +7,7 @@ const Videocard = ({ data, id }) => {
   return (
     <Card
       color="red"
-      image={data.videoUrl}
+      image="https://firebasestorage.googleapis.com/v0/b/esd-db-test.appspot.com/o/fb_image.png?alt=media&token=68824200-e057-40d6-9310-9ce91bb3bfc7"
       header={data.title}
       description={data.description}
       onClick={() => {
