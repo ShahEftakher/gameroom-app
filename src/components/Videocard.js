@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Card } from 'semantic-ui-react';
 
-
 const Videocard = ({ data, id }) => {
   return (
     <Link to={'/video/' + id} className="mx-2 my-2">

@@ -7,6 +7,7 @@ catergories
 Upload status bar
 Uploading(status)
 all videos page
+view User profile
 
 filter video
 
@@ -22,8 +23,7 @@ upvote???
 add like initial video upload
 sort by like
 sort by newest
-video by like
-video by newest
+
 -----------------------
 forgot password
 password update
@@ -40,6 +40,8 @@ password update
 like
 like count
 comment
+video by like
+video by newest
 
 forum:
 post 

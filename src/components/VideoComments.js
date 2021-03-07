@@ -22,6 +22,8 @@ const VideoComments = ({ videoId }) => {
       author: currentUser.displayName,
       body: newComment,
       imageUrl: currentUser.photoURL,
+      created_at: new Date().toLocaleTimeString(),
+      created_date: new Date().toLocaleDateString(),
     };
     let temp_comments = [...comments];
     temp_comments.push(temp_new_comment);

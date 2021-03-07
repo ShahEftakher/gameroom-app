@@ -3,13 +3,12 @@ import Navbar from '../components/Navbar';
 import CarouselComp from '../components/CarouselComp';
 import VideoContainer from '../components/VideoContainer';
 import UserContainer from '../components/UserContainer';
-import Videocard from '../components/Videocard';
 import Usercard from '../components/Usercard';
-import Loginmodal from '../components/Loginmodal';
 import { db } from '../firebase';
 
 const Homepage = () => {
-  const [videos, setVideos] = useState([]);
+  const [newVideos, setNewVideos] = useState([]);
+  const [mostLiked, setMostLiked] = useState([]);
   const loadVideos = async () => {
     db.collection('videos').onSnapshot((querysnapShot) => {
       let tempVideos = [];
@@ -19,12 +18,28 @@ const Homepage = () => {
           data: doc.data(),
         });
       });
-      setVideos(tempVideos);
+      setNewVideos(tempVideos);
     });
+  };
+
+  const getMostLikedVideo = async () => {
+    let temp_videos = [];
+    db.collection('videos')
+      .orderBy('likes', 'desc')
+      .onSnapshot((querysnapShot) => {
+        querysnapShot.forEach((doc) => {
+          temp_videos.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setMostLiked(temp_videos);
+      });
   };
 
   useEffect(() => {
     loadVideos();
+    getMostLikedVideo();
   }, []);
 
   return (
@@ -32,14 +47,10 @@ const Homepage = () => {
       <Navbar />
       <div className="mx-3">
         <CarouselComp />
-        <div class="row p-2 mb-1">
-          <div className="w-100">
-            <VideoContainer videos={videos} />
-          </div>
-        </div>
-        <div class="row p-2 mt-1">
-          <VideoContainer videos={videos} />
-        </div>
+
+        <VideoContainer videos={newVideos} title={'New Videos'} />
+
+        <VideoContainer videos={mostLiked} title={'Most Popular Videos'} />
       </div>
     </div>
   );

@@ -9,7 +9,6 @@ const Forumpage = () => {
   const { currentUser } = useUserContext();
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState('');
-  const [change, setChange] = useState(true);
 
   const handleChange = (e) => {
     setNewPost(e.target.value);
