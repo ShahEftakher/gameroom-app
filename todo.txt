@@ -7,7 +7,7 @@ catergories
 Upload status bar
 Uploading(status)
 all videos page
-view User profile
+
 
 filter video
 
@@ -25,8 +25,7 @@ sort by like
 sort by newest
 
 -----------------------
-forgot password
-password update
+view User profile
 
 
 
@@ -39,6 +38,8 @@ like count
 comment
 video by like
 video by newest
+forgot password
+password update
 
 **** fix profile page ****
 - ** send useinfo req every update
