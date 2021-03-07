@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import VideoPlayer from '../components/Videoplayer';
-import { Button } from 'semantic-ui-react';
 import { db } from '../firebase';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import VideoComments from '../components/VideoComments';
@@ -26,10 +25,6 @@ const VideoPage = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const addView = () => {
-    setView(views + 1);
   };
 
   const getVideo = (id) => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, Form, Select, Header, Message } from 'semantic-ui-react';
+import { Button, Form, Header } from 'semantic-ui-react';
 import { Avatar } from '@material-ui/core';
 import Navbar from '../components/Navbar';
 import { useUserContext } from '../context/UserContext';

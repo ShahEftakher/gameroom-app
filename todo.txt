@@ -1,21 +1,15 @@
 ======================
         left
 ======================
-
 video thumbnail
 catergories
-Upload status bar
-Uploading(status)
-all videos page
-
+mentor stats
 
 filter video
-
 
 forum:
 forum color different??
 upvote???
-
 
 =======================
         By today
@@ -23,10 +17,16 @@ upvote???
 add like initial video upload
 sort by like
 sort by newest
-
 -----------------------
 view User profile
 
+
+***********************
+        git
+***********************
+Upload status bar
+Uploading(status)
+all videos page
 
 
 =======================

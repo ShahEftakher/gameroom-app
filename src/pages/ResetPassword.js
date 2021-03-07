@@ -3,7 +3,6 @@ import { useHistory } from 'react-router';
 import { Button, Header, Message, Form } from 'semantic-ui-react';
 import Navbar from '../components/Navbar';
 import { useUserContext } from '../context/UserContext';
-import { auth } from '../firebase';
 
 const ResetPassword = () => {
   const [error, setError] = useState('');
@@ -28,7 +27,7 @@ const ResetPassword = () => {
       setColor('red');
       return;
     }
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setError('Password does not match!');
       setColor('red');
       return;
