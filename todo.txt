@@ -27,10 +27,7 @@ sort by newest
 -----------------------
 forgot password
 password update
-**** fix profile page ****
-- ** send useinfo req every update
-- ** call for video after that
-- ** on querySnapshot video from db for profile 
+
 
 
 =======================
@@ -42,6 +39,11 @@ like count
 comment
 video by like
 video by newest
+
+**** fix profile page ****
+- ** send useinfo req every update
+- ** call for video after that
+- ** on querySnapshot video from db for profile 
 
 forum:
 post 

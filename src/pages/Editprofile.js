@@ -10,11 +10,7 @@ const Editprofile = () => {
   const emailRef = useRef();
   const bioRef = useRef();
   const nameRef = useRef();
-  const {
-    setCurrentUser,
-    currentUser,
-    userInfo,
-  } = useUserContext();
+  const { setCurrentUser, currentUser, userInfo } = useUserContext();
   const [loading, setLoading] = useState({});
   const [disabled, setDisable] = useState({});
   const history = useHistory();
@@ -119,8 +115,11 @@ const Editprofile = () => {
                 {/** initially displaying, later on breaking*/}
               </Form.Field>
               <Form.Field>
-                <Link>
-                  <span className="d-flex justify-content-center">
+                <Link
+                  style={{ color: 'red', textDecoration: 'underline' }}
+                  to="/reset-password"
+                >
+                  <span className="d-flex justify-content-end">
                     Update Password
                   </span>
                 </Link>
