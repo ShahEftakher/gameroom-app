@@ -4,6 +4,7 @@
 video thumbnail
 catergories
 mentor stats
+toastify
 
 filter video
 
@@ -24,9 +25,7 @@ view User profile
 ***********************
         git
 ***********************
-Upload status bar
-Uploading(status)
-all videos page
+
 
 
 =======================
@@ -40,6 +39,9 @@ video by like
 video by newest
 forgot password
 password update
+Upload status bar
+Uploading(status)
+all videos page
 
 **** fix profile page ****
 - ** send useinfo req every update
