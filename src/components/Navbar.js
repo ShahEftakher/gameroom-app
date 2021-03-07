@@ -35,11 +35,9 @@ const Navbar = () => {
         <Button
           className="w-100 mb-1 me-1"
           onClick={() => {
-            history.push('/profile');
+            history.push('/profile/'+currentUser.uid);
           }}
-        >
-          Profile
-        </Button>
+        >Profile</Button>
         <br />
         <Button
           className="w-100 mb-1 me-1"
@@ -112,7 +110,7 @@ const Navbar = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
-          <Link className="navbar-brand fs-4 me-5" to='/forum'>
+          <Link className="navbar-brand fs-4 me-5" to="/forum">
             Forum
           </Link>
           {currentUser ? (

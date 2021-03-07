@@ -21,7 +21,7 @@ function App() {
       <Route path={'/'} exact component={Homepage} />
       <Route path={'/forum'} exact component={Forumpage} />
       <Route path={'/forum/post/:id'} exact component={PostPage} />
-      <Privateroute path={'/profile'} exact component={Profilepage} />
+      <Privateroute path={'/profile/:id'} exact component={Profilepage} />
       <Privateroute path={'/editprofile'} exact component={Editprofile} />
       <Privateroute path={'/upload'} exact component={Uploadvideo} />
       <Privateroute path={'/video/:id'} exact component={VideoPage} />
