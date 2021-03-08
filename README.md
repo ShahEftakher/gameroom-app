@@ -3,6 +3,7 @@
 ## Description
 
 ## Features:
+### Video
 - Authentication
 - Update profile
 - Update profile image
@@ -12,7 +13,15 @@
 - Watch video
 - Like videos
 - Like count
-- comment
+- Comment on video
+- Video catergory
+- Sort video
+
+### Forum
+- Forum 
+- Forum post
+- Comment on forum post
+
 
 ## Available Scripts
 
