@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Form, Select } from 'semantic-ui-react';
-import Navbar from '../components/Navbar';
-import ProgressBar from '../components/ProgressBar';
-import Videoplayer from '../components/Videoplayer';
-import { useUserContext } from '../context/UserContext';
-import { db, storage } from '../firebase';
+import Navbar from '../../components/common/Navbar';
+import ProgressBar from '../../components/video/ProgressBar';
+import Videoplayer from '../../components/video/Videoplayer';
+import { useUserContext } from '../../context/UserContext';
+import { db, storage } from '../../firebase';
 
 const Uploadvideo = () => {
   const [videoUrl, setVideoUrl] = useState(null);

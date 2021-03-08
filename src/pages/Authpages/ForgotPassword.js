@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Header, Message, Form } from 'semantic-ui-react';
-import Navbar from '../components/Navbar';
-import { auth } from '../firebase';
+import Navbar from '../../components/common/Navbar';
+import { auth } from '../../firebase';
 
 const ForgotPassword = () => {
   const [error, setError] = useState('');

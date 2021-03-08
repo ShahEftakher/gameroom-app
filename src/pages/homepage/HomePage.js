@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import CarouselComp from '../components/CarouselComp';
-import VideoContainer from '../components/VideoContainer';
-import UserContainer from '../components/UserContainer';
-import Usercard from '../components/Usercard';
-import { db } from '../firebase';
+import Navbar from '../../components/common/Navbar';
+import CarouselComp from '../../components/common/CarouselComp';
+import VideoContainer from '../../components/video/VideoContainer';
+import UserContainer from '../../components/profile/UserContainer';
+import Usercard from '../../components/profile/Usercard';
+import { db } from '../../firebase';
 import { ToastContainer } from 'react-toastify';
 
 const Homepage = () => {

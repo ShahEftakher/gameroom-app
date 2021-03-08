@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form, Select, Header, Message } from 'semantic-ui-react';
-import Navbar from '../components/Navbar';
-import { useUserContext } from '../context/UserContext';
-import { db } from '../firebase';
+import Navbar from '../../components/common/Navbar';
+import { useUserContext } from '../../context/UserContext';
+import { db } from '../../firebase';
 
 const Signup = () => {
   const emailRef = useRef();

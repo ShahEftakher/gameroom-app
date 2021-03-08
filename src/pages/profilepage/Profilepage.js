@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Profilecard from '../components/Profilecard';
-import MentorStats from '../components/MentorStats';
-import { db } from '../firebase';
-import VideoContainer from '../components/VideoContainer';
+import Navbar from '../../components/common/Navbar';
+import Profilecard from '../../components/profile/Profilecard';
+import MentorStats from '../../components/profile/MentorStats';
+import { db } from '../../firebase';
+import VideoContainer from '../../components/video/VideoContainer';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Profilepage = () => {

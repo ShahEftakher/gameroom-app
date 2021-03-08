@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useUserContext } from '../context/UserContext';
+import { useUserContext } from '../../context/UserContext';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Button, Dropdown, Header } from 'semantic-ui-react';
-import Logo from '../image/logo.png';
+import Logo from '../../image/logo.png';
 
 const Navbar = () => {
   const {

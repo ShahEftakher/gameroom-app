@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Comment, Form, Header } from 'semantic-ui-react';
-import { useUserContext } from '../context/UserContext';
-import { db } from '../firebase';
+import { useUserContext } from '../../context/UserContext';
+import { db } from '../../firebase';
 import PostComment from './PostComment';
 
 const PostComments = ({ id }) => {
@@ -18,6 +18,7 @@ const PostComments = ({ id }) => {
       return;
     }
     let temp_new_comment = {
+      uid: currentUser.uid,
       author: currentUser.displayName,
       body: newComment,
       imageUrl: currentUser.photoURL,

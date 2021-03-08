@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Editprofile from './pages/Editprofile';
-import Forumpage from './pages/Forumpage';
-import Gallerypage from './pages/Gallerypage';
-import Homepage from './pages/HomePage';
-import Login from './pages/Login';
-import PostPage from './pages/PostPage';
-import Profilepage from './pages/Profilepage';
-import Signup from './pages/Signup';
-import Uploadvideo from './pages/Uploadvideo';
-import VideoPage from './pages/VideoPage';
+import Editprofile from './pages/profilepage/Editprofile';
+import Forumpage from './pages/forumpages/Forumpage';
+import Gallerypage from './pages/videopages/Gallerypage';
+import Homepage from './pages/homepage/HomePage';
+import Login from './pages/Authpages/Login';
+import PostPage from './pages/forumpages/PostPage';
+import Profilepage from './pages/profilepage/Profilepage';
+import Signup from './pages/Authpages/Signup';
+import Uploadvideo from './pages/videopages/Uploadvideo';
+import VideoPage from './pages/videopages/VideoPage';
 import Privateroute from './Privateroute';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
+import ForgotPassword from './pages/Authpages/ForgotPassword';
+import ResetPassword from './pages/profilepage/ResetPassword';
 
 function App() {
   return (

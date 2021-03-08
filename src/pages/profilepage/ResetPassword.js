@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { toast } from 'react-toastify';
 import { Button, Header, Message, Form } from 'semantic-ui-react';
-import Navbar from '../components/Navbar';
-import { useUserContext } from '../context/UserContext';
+import Navbar from '../../components/common/Navbar';
+import { useUserContext } from '../../context/UserContext';
 
 const ResetPassword = () => {
   const [error, setError] = useState('');

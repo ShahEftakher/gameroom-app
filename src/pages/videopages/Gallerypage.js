@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import CategoryFilter from '../components/CategoryFilter';
-import GalleryVideo from '../components/GalleryVideoCard';
-import Navbar from '../components/Navbar';
-import VideoFilter from '../components/VideoFilter';
-import { db } from '../firebase';
+import CategoryFilter from '../../components/video/CategoryFilter';
+import GalleryVideo from '../../components/video/GalleryVideoCard';
+import Navbar from '../../components/common/Navbar';
+import VideoFilter from '../../components/video/VideoFilter';
+import { db } from '../../firebase';
 
 export default function Gallerypage() {
   const [videos, setVideos] = useState([]);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
-import { useUserContext } from '../context/UserContext';
+import { useUserContext } from '../../context/UserContext';
 import EditIcon from '@material-ui/icons/Edit';
 import { Avatar } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';

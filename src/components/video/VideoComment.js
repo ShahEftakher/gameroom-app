@@ -1,18 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Comment, Header, Form, Button } from 'semantic-ui-react';
 
 const VideoComment = ({ comment }) => {
   return (
     <div>
       <Comment className="mt-3 p-1">
-        <Comment.Avatar
-          as="a"
-          src={comment.imageUrl}
-        />
+        <Comment.Avatar as="a" src={comment.imageUrl} />
         <Comment.Content>
-          <Comment.Author as="a">{comment.author}</Comment.Author>
+          <Link to={'/profile/' + comment.uid}>
+            <Comment.Author as="a">{comment.author}</Comment.Author>
+          </Link>
           <Comment.Metadata>
-            <span>Today at 5:42PM</span>
+            <span>{comment.created_at}</span>
           </Comment.Metadata>
           <Comment.Text>{comment.body}</Comment.Text>
         </Comment.Content>

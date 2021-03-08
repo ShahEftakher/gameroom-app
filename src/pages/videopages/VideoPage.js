@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import VideoPlayer from '../components/Videoplayer';
-import { db } from '../firebase';
+import Navbar from '../../components/common/Navbar';
+import VideoPlayer from '../../components/video/Videoplayer';
+import { db } from '../../firebase';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import VideoComments from '../components/VideoComments';
+import VideoComments from '../../components/video/VideoComments';
 
 const VideoPage = (props) => {
   const videoId = window.location.pathname.split('/').pop();

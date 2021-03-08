@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, Form, Header } from 'semantic-ui-react';
 import { Avatar } from '@material-ui/core';
-import Navbar from '../components/Navbar';
-import { useUserContext } from '../context/UserContext';
+import Navbar from '../../components/common/Navbar';
+import { useUserContext } from '../../context/UserContext';
 import { Link, useHistory } from 'react-router-dom';
-import { auth, db, storage } from '../firebase';
+import { auth, db, storage } from '../../firebase';
 import { toast } from 'react-toastify';
 
 const Editprofile = () => {

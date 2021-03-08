@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Comment } from 'semantic-ui-react';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { Link } from 'react-router-dom';
 
 const PostComment = ({ comment }) => {
   return (
@@ -9,7 +10,9 @@ const PostComment = ({ comment }) => {
         <Comment className="mt-3 p-1 col-sm-8">
           <Comment.Avatar as="a" src={comment.imageUrl} />
           <Comment.Content>
-            <Comment.Author as="a">{comment.author}</Comment.Author>
+            <Link to={'/profile/' + comment.uid}>
+              <Comment.Author as="a">{comment.author}</Comment.Author>
+            </Link>
             <Comment.Metadata>
               <span>{comment.created_time}</span>
             </Comment.Metadata>
@@ -17,11 +20,7 @@ const PostComment = ({ comment }) => {
           </Comment.Content>
         </Comment>
         <div className="col-sm-4 mt-4">
-          <Button
-            type="button"
-            color="red"
-            style={{ marginLeft: '55%' }}
-          >
+          <Button type="button" color="red" style={{ marginLeft: '55%' }}>
             <FavoriteBorderIcon />
           </Button>
         </div>

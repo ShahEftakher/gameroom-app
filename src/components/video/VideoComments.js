@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Comment, Header, Form, Button } from 'semantic-ui-react';
-import { useUserContext } from '../context/UserContext';
-import { db } from '../firebase';
+import { useUserContext } from '../../context/UserContext';
+import { db } from '../../firebase';
 import VideoComment from './VideoComment';
 
 const VideoComments = ({ videoId }) => {
@@ -19,6 +19,7 @@ const VideoComments = ({ videoId }) => {
       return;
     }
     let temp_new_comment = {
+      uid: currentUser.uid,
       author: currentUser.displayName,
       body: newComment,
       imageUrl: currentUser.photoURL,

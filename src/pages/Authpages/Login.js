@@ -3,8 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { Form } from 'semantic-ui-react';
 import { Button, Header, Message } from 'semantic-ui-react';
-import Navbar from '../components/Navbar';
-import { useUserContext } from '../context/UserContext';
+import Navbar from '../../components/common/Navbar';
+import { useUserContext } from '../../context/UserContext';
 
 const Login = () => {
   const emailRef = useRef();

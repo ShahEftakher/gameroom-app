@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'semantic-ui-react';
-import ForumPost from '../components/ForumPost';
-import Navbar from '../components/Navbar';
-import { useUserContext } from '../context/UserContext';
-import { db } from '../firebase';
+import ForumPost from '../../components/forum/ForumPost';
+import Navbar from '../../components/common/Navbar';
+import { useUserContext } from '../../context/UserContext';
+import { db } from '../../firebase';
 
 const Forumpage = () => {
   const { currentUser } = useUserContext();
