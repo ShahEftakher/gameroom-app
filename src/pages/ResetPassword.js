@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import { Button, Header, Message, Form } from 'semantic-ui-react';
 import Navbar from '../components/Navbar';
 import { useUserContext } from '../context/UserContext';
@@ -9,8 +10,12 @@ const ResetPassword = () => {
   const [color, setColor] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { updatePassword } = useUserContext();
+  const { updatePassword, logout } = useUserContext();
   const history = useHistory();
+
+  const passwordUpdateToast = () => {
+    return toast.success('Password successfully updated!/nLogin to continue!');
+  };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -34,7 +39,9 @@ const ResetPassword = () => {
     }
     updatePassword(password).then(() => {
       e.target.reset();
-      history.push('/editprofile')
+      logout();
+      passwordUpdateToast();
+      history.push('/login');
     });
   };
 

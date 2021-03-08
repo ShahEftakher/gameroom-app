@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import CarouselComp from '../components/CarouselComp';
 import VideoContainer from '../components/VideoContainer';
 import UserContainer from '../components/UserContainer';
 import Usercard from '../components/Usercard';
 import { db } from '../firebase';
+import { ToastContainer } from 'react-toastify';
 
 const Homepage = () => {
   const [newVideos, setNewVideos] = useState([]);
@@ -46,10 +47,10 @@ const Homepage = () => {
     <div>
       <Navbar />
       <div className="mx-3">
+        <ToastContainer />
         <CarouselComp />
 
         <VideoContainer videos={newVideos} title={'New Videos'} />
-
         <VideoContainer videos={mostLiked} title={'Most Popular Videos'} />
       </div>
     </div>

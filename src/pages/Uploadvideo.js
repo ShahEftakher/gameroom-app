@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Form, Select } from 'semantic-ui-react';
 import Navbar from '../components/Navbar';
 import ProgressBar from '../components/ProgressBar';
@@ -54,6 +55,12 @@ const Uploadvideo = () => {
     { key: 'valorant', value: 'Valorant', text: 'Valorant' },
   ];
 
+  const uploadSuccessToast = () => {
+    return toast.error('Video uploaded!', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!description && !title) {
@@ -72,6 +79,7 @@ const Uploadvideo = () => {
         likes: 0,
       })
       .then(() => {
+        uploadSuccessToast();
         history.push('/profile');
       })
       .catch((err) => {

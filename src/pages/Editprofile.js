@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { useUserContext } from '../context/UserContext';
 import { Link, useHistory } from 'react-router-dom';
 import { auth, db, storage } from '../firebase';
+import { toast } from 'react-toastify';
 
 const Editprofile = () => {
   const emailRef = useRef();
@@ -30,6 +31,13 @@ const Editprofile = () => {
     setDisable({});
   };
 
+  const profileUpdateToast = () => {
+    console.log('function called');
+    return toast.error('Profile updated!', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
   const handleSubmit = () => {
     if (!emailRef.current.value || !nameRef.current.value) {
       return;
@@ -52,6 +60,7 @@ const Editprofile = () => {
           .then(() => {
             auth.currentUser.updateEmail(emailRef.current.value).then(() => {
               setCurrentUser(auth.currentUser);
+              profileUpdateToast();
               history.push('/profile/' + userInfo.uid);
             });
           })

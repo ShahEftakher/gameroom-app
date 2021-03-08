@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import { Form } from 'semantic-ui-react';
 import { Button, Header, Message } from 'semantic-ui-react';
 import Navbar from '../components/Navbar';
@@ -11,12 +12,18 @@ const Login = () => {
   const history = useHistory();
   const [error, setError] = useState();
   const { login, setUserInfo, setIsLoggedIn } = useUserContext();
+  const loginSuccessToast = () => {
+    return toast.error('Login Successful!', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     login(emailRef.current.value, passwordRef.current.value)
       .then(() => {
         setIsLoggedIn(true);
+        loginSuccessToast();
         history.push('/');
       })
       .catch((err) => {
@@ -28,6 +35,7 @@ const Login = () => {
     <div>
       <Navbar />
       <div className="d-flex justify-content-center mt-5 mt-5">
+        <ToastContainer />
         <div className="shadow p-3 mb-5 bg-body rounded mt-5">
           <Header className="mt-3" size="large" textAlign="center">
             Login

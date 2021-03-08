@@ -4,6 +4,7 @@ import Profilecard from '../components/Profilecard';
 import MentorStats from '../components/MentorStats';
 import { db } from '../firebase';
 import VideoContainer from '../components/VideoContainer';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Profilepage = () => {
   const userId = window.location.pathname.split('/').pop();
@@ -51,6 +52,7 @@ const Profilepage = () => {
     <div>
       <Navbar />
       <div class="container mt-4">
+        <ToastContainer />
         <div class="row">
           <div class="col-sm-3">{<Profilecard userInfo={userInfo} />}</div>
           <div class="col-sm-9">
