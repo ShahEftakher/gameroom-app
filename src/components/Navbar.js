@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Button, Dropdown, Header } from 'semantic-ui-react';
+import Logo from '../image/logo.png';
 
 const Navbar = () => {
   const {
@@ -35,9 +36,11 @@ const Navbar = () => {
         <Button
           className="w-100 mb-1 me-1"
           onClick={() => {
-            history.push('/profile/'+currentUser.uid);
+            history.push('/profile/' + currentUser.uid);
           }}
-        >Profile</Button>
+        >
+          Profile
+        </Button>
         <br />
         <Button
           className="w-100 mb-1 me-1"
@@ -103,17 +106,17 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse justify-content-start">
           <Link className="navbar-brand fs-1" to="/">
-            Gameroom
+            <img src={Logo} style={{ height: '15%', width: '15%' }} />
           </Link>
         </div>
         <div
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
-          <Link className="navbar-brand fs-4 me-5" to='/gallery'>
+          <Link className="navbar-brand fs-4 me-5" to="/gallery">
             Gallery
           </Link>
-          <Link className="navbar-brand fs-4 me-5" to='/forum'>
+          <Link className="navbar-brand fs-4 me-5" to="/forum">
             Forum
           </Link>
           {currentUser ? (
