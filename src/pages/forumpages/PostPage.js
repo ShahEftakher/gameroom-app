@@ -36,7 +36,7 @@ const PostPage = () => {
         <Card fluid className="mb-5" color="orange" header="Option 2">
           <h6 className="card-header d-flex">
             <Avatar src={post.avatarImg} sizes="large" />
-            <Link to={'/profile/' + post.uid}>
+            <Link to={'/userProfile/' + post.uid}>
               <p className="ms-2 fs-3">{post.name}</p>
             </Link>
           </h6>

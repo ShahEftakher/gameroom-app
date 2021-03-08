@@ -13,6 +13,7 @@ import VideoPage from './pages/videopages/VideoPage';
 import Privateroute from './Privateroute';
 import ForgotPassword from './pages/Authpages/ForgotPassword';
 import ResetPassword from './pages/profilepage/ResetPassword';
+import Userprofilepage from './pages/profilepage/Userprofilepage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path={'/forum'} exact component={Forumpage} />
       <Route path={'/gallery'} exact component={Gallerypage} />
       <Route path={'/forum/post/:id'} exact component={PostPage} />
+      <Route path={'/userprofile/:id'} exact component={Userprofilepage} />
       <Privateroute path={'/profile/:id'} exact component={Profilepage} />
       <Privateroute path={'/editprofile'} exact component={Editprofile} />
       <Privateroute path={'/upload'} exact component={Uploadvideo} />

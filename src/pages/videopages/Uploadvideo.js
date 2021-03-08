@@ -56,7 +56,7 @@ const Uploadvideo = () => {
   ];
 
   const uploadSuccessToast = () => {
-    return toast.error('Video uploaded!', {
+    toast.error('Video uploaded!', {
       position: toast.POSITION.TOP_RIGHT,
     });
   };

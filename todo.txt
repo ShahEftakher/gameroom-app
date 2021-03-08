@@ -1,11 +1,10 @@
 ======================
         left
 ======================
-video thumbnail
+ui design
 
-mentor stats
-toastify
 
+toastify??? why not working??
 
 
 forum:
@@ -17,7 +16,9 @@ upvote???
 =======================
 
 -----------------------
-view User profile
+**mentor stats
+****forum posts on profile page
+***video thumbnail
 
 
 ***********************
@@ -45,6 +46,7 @@ add like initial video upload
 sort by like
 sort by newest
 filter video
+view User profile
 
 **** fix profile page ****
 - ** send useinfo req every update

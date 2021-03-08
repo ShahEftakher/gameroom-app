@@ -13,7 +13,7 @@ const Login = () => {
   const [error, setError] = useState();
   const { login, setUserInfo, setIsLoggedIn } = useUserContext();
   const loginSuccessToast = () => {
-    return toast.error('Login Successful!', {
+    toast.error('Login Successful!', {
       position: toast.POSITION.TOP_RIGHT,
     });
   };

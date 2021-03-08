@@ -8,7 +8,7 @@ const VideoComment = ({ comment }) => {
       <Comment className="mt-3 p-1">
         <Comment.Avatar as="a" src={comment.imageUrl} />
         <Comment.Content>
-          <Link to={'/profile/' + comment.uid}>
+          <Link to={'/userprofile/' + comment.uid}>
             <Comment.Author as="a">{comment.author}</Comment.Author>
           </Link>
           <Comment.Metadata>

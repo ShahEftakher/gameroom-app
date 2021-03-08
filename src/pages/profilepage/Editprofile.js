@@ -33,7 +33,7 @@ const Editprofile = () => {
 
   const profileUpdateToast = () => {
     console.log('function called');
-    return toast.error('Profile updated!', {
+    toast.error('Profile updated!', {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
