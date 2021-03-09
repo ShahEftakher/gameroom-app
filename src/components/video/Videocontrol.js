@@ -35,6 +35,15 @@ const useStyles = makeStyles({
     width: 100,
     color: '#fff',
   },
+  controlIcons: {
+    color: '#777',
+    fontSize: 50,
+    transform: 'scale(0.9)',
+    '&:hover': {
+      color: '#fff',
+      transform: 'scale(1)',
+    },
+  },
 })
 
 const PrettoSlider = withStyles({
@@ -89,6 +98,19 @@ const Controls = forwardRef(
     return (
       <div ref={ref} className={classes.controlsWrapper}>
         <Grid></Grid>
+        <Grid container direction='row' alignItems='center' justify='center'>
+          <IconButton
+            className={classes.controlIcons}
+            aria-label='regind'
+            onClick={onPlayPause}
+          >
+            {playing ? (
+              <PauseIcon fontSize='inherit' />
+            ) : (
+              <PlayArrowIcon fontSize='inherit' />
+            )}
+          </IconButton>
+        </Grid>
         <div className={classes.bottomControls}>
           <Grid
             container
