@@ -2,7 +2,7 @@
         left
 ======================
 ui design
-
+follower(db)***i want to check only one collection***
 
 toastify??? why not working??
 

@@ -49,7 +49,7 @@ const UserprofilePage = () => {
   return (
     <div>
       <Navbar />
-      <div class="container mt-4">
+      <div class="container-lg fluid mt-4">
         <ToastContainer />
         <div class="row">
           <div class="col-sm-3">{<Userprofile userInfo={userInfo} />}</div>

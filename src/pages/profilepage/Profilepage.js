@@ -3,8 +3,8 @@ import Navbar from '../../components/common/Navbar';
 import Profilecard from '../../components/profile/Profilecard';
 import MentorStats from '../../components/profile/MentorStats';
 import { db } from '../../firebase';
-import VideoContainer from '../../components/video/VideoContainer';
 import { toast, ToastContainer } from 'react-toastify';
+import VideoContainerV2 from '../../components/video/VideoContainerV2';
 
 const Profilepage = () => {
   const userId = window.location.pathname.split('/').pop();
@@ -61,7 +61,7 @@ const Profilepage = () => {
               {userInfo.role === 'mentor' ? <MentorStats /> : ''}
             </div>
             {userInfo.role === 'mentor' ? (
-              <VideoContainer videos={videos} title={'My videos'} />
+              <VideoContainerV2 videos={videos} title={'My videos'} />
             ) : (
               ''
             )}
