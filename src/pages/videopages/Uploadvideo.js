@@ -27,14 +27,21 @@ const Uploadvideo = () => {
     const storageRef = storage.ref();
     const videoRef = storageRef.child(videoFile.name);
     let uploadTask = videoRef.put(videoFile);
-    uploadTask.on('state_changed', function (snapshot) {
-      progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      setProgress(progress);
-    });
-    const fileUrl = await videoRef.getDownloadURL();
-    setVideoUrl(fileUrl);
-    setDisable({});
-    setLoading({});
+    uploadTask.on(
+      'state_changed',
+      function (snapshot) {
+        progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress(progress);
+      },
+      null,
+
+      async function () {
+        const fileUrl = await videoRef.getDownloadURL();
+        setVideoUrl(fileUrl);
+        setDisable({});
+        setLoading({});
+      }
+    );
   };
 
   const handleSelect = (event, data) => {
