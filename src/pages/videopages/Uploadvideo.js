@@ -84,10 +84,11 @@ const Uploadvideo = () => {
         created_time: new Date().toLocaleTimeString(),
         created_date: new Date().toLocaleDateString(),
         likes: 0,
+        comments: [],
       })
       .then(() => {
         uploadSuccessToast();
-        history.push('/profile');
+        history.push('/profile/'+currentUser.uid);
       })
       .catch((err) => {
         console.log(err);
@@ -97,8 +98,12 @@ const Uploadvideo = () => {
   return (
     <div>
       <Navbar />
-      <div class="row align-items-center">
-        {videoUrl ? <Videoplayer url={videoUrl} className="w-75 h-75" /> : ''}
+      <div className="row align-items-center">
+        <div className="d-flex justify-content-center">
+          <div className="w-75">
+            {videoUrl ? <Videoplayer url={videoUrl} /> : ''}
+          </div>
+        </div>
         <div class="d-flex justify-content-center mt-5 mb-5">
           <Form onSubmit={handleSubmit}>
             {progress === 100 ? (

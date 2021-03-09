@@ -11,16 +11,18 @@ const Homepage = () => {
   const [newVideos, setNewVideos] = useState([]);
   const [mostLiked, setMostLiked] = useState([]);
   const loadVideos = async () => {
-    db.collection('videos').onSnapshot((querysnapShot) => {
-      let tempVideos = [];
-      querysnapShot.forEach((doc) => {
-        tempVideos.push({
-          id: doc.id,
-          data: doc.data(),
+    db.collection('videos')
+      .orderBy('created_time', 'desc')
+      .onSnapshot((querysnapShot) => {
+        let tempVideos = [];
+        querysnapShot.forEach((doc) => {
+          tempVideos.push({
+            id: doc.id,
+            data: doc.data(),
+          });
         });
+        setNewVideos(tempVideos);
       });
-      setNewVideos(tempVideos);
-    });
   };
 
   const getMostLikedVideo = async () => {
