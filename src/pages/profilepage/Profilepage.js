@@ -4,7 +4,7 @@ import Profilecard from '../../components/profile/Profilecard';
 import MentorStats from '../../components/profile/MentorStats';
 import { db } from '../../firebase';
 import { toast, ToastContainer } from 'react-toastify';
-import VideoContainerV2 from '../../components/video/VideoContainerV2';
+import VideoContainerV2 from '../../components/video/editVideo/VideoContainerV2';
 
 const Profilepage = () => {
   const userId = window.location.pathname.split('/').pop();
