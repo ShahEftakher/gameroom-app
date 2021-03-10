@@ -67,7 +67,7 @@ const Forumpage = () => {
             className="w-50 border mt-3 shadow p-3 mb-5 bg-body rounded"
             onSubmit={handleSubmit}
           >
-            <h6 className="display-6">Ask</h6>
+            <h4 className="text-muted lead">Write a post</h4>
             <Form.Field>
               <Form.TextArea
                 className=""
@@ -76,16 +76,23 @@ const Forumpage = () => {
               />
             </Form.Field>
             <Form.Field className="d-flex justify-content-end">
-              <Button>ASK!</Button>
+              <Button
+                icon="pencil alternate"
+                labelPosition="left"
+                content="Post"
+                positive
+              />
             </Form.Field>
           </Form>
         </div>
       ) : (
         ''
       )}
-      {posts.map((post) => {
-        return <ForumPost id={post.id} post={post.post} />;
-      })}
+      <div className='mb-4'>
+        {posts.map((post) => {
+          return <ForumPost id={post.id} post={post.post} />;
+        })}
+      </div>
     </div>
   );
 };

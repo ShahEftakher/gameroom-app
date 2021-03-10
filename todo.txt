@@ -7,8 +7,6 @@ follower(db)***i want to check only one collection***
 toastify??? why not working??
 
 pagination
-limit video retrieve
-redirect to all videos page
 edit post
 delete post
 
@@ -53,6 +51,8 @@ sort by newest
 filter video
 view User profile
 edit uploaded video
+limit video retrieve
+redirect to all videos page
 
 **** fix profile page ****
 - ** send useinfo req every update
