@@ -9,7 +9,7 @@ toastify??? why not working??
 pagination
 edit post
 delete post
-get bio from your mama bitch
+
 
 forum:
 forum color different??
