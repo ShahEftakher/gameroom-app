@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, Form, Select, Header, Message } from 'semantic-ui-react';
 import Navbar from '../../components/common/Navbar';
 import { useUserContext } from '../../context/UserContext';
-import { db } from '../../firebase';
+import { auth, db } from '../../firebase';
 
 const Signup = () => {
   const emailRef = useRef();
@@ -18,7 +18,7 @@ const Signup = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setError('Password does not match!');
+      setError('Passwords do not match!');
       return;
     }
     if (role !== 'mentor' && role !== 'student') {
@@ -38,10 +38,9 @@ const Signup = () => {
         role
       )
         .then((userCreds) => {
-          console.log(userCreds.user);
+          console.log(userCreds);
           userCreds.user.updateProfile({
             displayName: nameRef.current.value,
-            gb: role,
           });
           db.collection('users')
             .doc(userCreds.user.uid)
@@ -52,13 +51,23 @@ const Signup = () => {
               role: role,
               bio: '',
             })
-            .then(() => {})
+            .then(() => {
+              if (role !== 'mentor') {
+                history.push('/');
+                return;
+              }
+              auth.currentUser
+                .sendEmailVerification()
+                .then(() => {
+                  history.push('/');
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            })
             .catch((err) => {
               console.log(err);
             });
-          setTimeout(() => {
-            history.push('/');
-          }, 5000);
         })
         .catch((err) => {
           console.log(err);

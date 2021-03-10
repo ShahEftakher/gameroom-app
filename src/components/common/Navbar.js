@@ -51,7 +51,7 @@ const Navbar = () => {
           Videos
         </Button>
         <br />
-        {userInfo.role === 'mentor' ? (
+        {currentUser.emailVerified ? (
           <>
             <Button
               className="w-100 mb-1 me-1"

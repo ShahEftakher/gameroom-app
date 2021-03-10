@@ -43,7 +43,7 @@ const UserContextProvider = (props) => {
         localStorage.setItem('userid', JSON.stringify(userInfo.role));
       })
       .catch((error) => {
-        alert(error);
+        console.log(error);
       });
   };
 

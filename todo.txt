@@ -9,6 +9,7 @@ toastify??? why not working??
 pagination
 edit post
 delete post
+get bio from your mama bitch
 
 forum:
 forum color different??
@@ -53,6 +54,7 @@ view User profile
 edit uploaded video
 limit video retrieve
 redirect to all videos page
+email verification of content creator
 
 **** fix profile page ****
 - ** send useinfo req every update
