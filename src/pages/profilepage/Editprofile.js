@@ -11,11 +11,12 @@ const Editprofile = () => {
   const emailRef = useRef();
   const bioRef = useRef();
   const nameRef = useRef();
-  const { setCurrentUser, currentUser, userInfo } = useUserContext();
+  const { setCurrentUser, currentUser } = useUserContext();
   const [loading, setLoading] = useState({});
   const [disabled, setDisable] = useState({});
   const history = useHistory();
   const [imageURL, setImageURL] = useState(null);
+  const [userInfo, setUserInfo] = useState({});
 
   //handle file upload
   const handleChange = async (e) => {
@@ -36,6 +37,16 @@ const Editprofile = () => {
     toast.error('Profile updated!', {
       position: toast.POSITION.TOP_RIGHT,
     });
+  };
+
+  const getUserInfo = () => {
+    db.collection('users')
+      .doc(currentUser.uid)
+      .get()
+      .then((doc) => {
+        let data = doc.data();
+        setUserInfo(data);
+      });
   };
 
   const handleSubmit = () => {
@@ -61,7 +72,7 @@ const Editprofile = () => {
             auth.currentUser.updateEmail(emailRef.current.value).then(() => {
               setCurrentUser(auth.currentUser);
               profileUpdateToast();
-              history.push('/profile/' + userInfo.uid);
+              history.push('/profile/' + currentUser.uid);
             });
           })
           .catch((err) => {
@@ -75,6 +86,7 @@ const Editprofile = () => {
 
   useEffect(() => {
     setImageURL(currentUser.photoURL);
+    getUserInfo();
   }, []);
 
   return (
