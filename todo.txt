@@ -6,7 +6,11 @@ follower(db)***i want to check only one collection***
 
 toastify??? why not working??
 
-edit uploaded video
+pagination
+limit video retrieve
+redirect to all videos page
+edit post
+delete post
 
 forum:
 forum color different??
@@ -48,6 +52,7 @@ sort by like
 sort by newest
 filter video
 view User profile
+edit uploaded video
 
 **** fix profile page ****
 - ** send useinfo req every update

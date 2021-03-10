@@ -1,8 +1,11 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { useHistory } from 'react-router';
+import { Card, Button } from 'semantic-ui-react';
 import Videocard from './Videocard';
 
 const VideoContainer = ({ videos, title }) => {
+  const history = useHistory();
+
   return (
     <div class="col-md-9 border border-dark p-3 mt-2 w-100">
       <h4 className="display-4">{title}</h4>
@@ -11,6 +14,16 @@ const VideoContainer = ({ videos, title }) => {
           return <Videocard data={video.data} id={video.id} key={video.id} />;
         })}
       </Card.Group>
+      <div className="d-flex justify-content-end mt-3">
+        <Button
+          labelPosition="right"
+          content="   All videos"
+          icon="chevron circle right"
+          onClick={() => {
+            history.push('/gallery');
+          }}
+        />
+      </div>
     </div>
   );
 };

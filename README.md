@@ -16,6 +16,7 @@
 - Comment on video
 - Video catergory
 - Sort video
+- Update video 
 
 ### Forum
 - Forum 

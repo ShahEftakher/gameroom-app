@@ -13,6 +13,7 @@ const Homepage = () => {
   const loadVideos = async () => {
     db.collection('videos')
       .orderBy('created_time', 'desc')
+      .limit(8)
       .onSnapshot((querysnapShot) => {
         let tempVideos = [];
         querysnapShot.forEach((doc) => {
@@ -29,6 +30,7 @@ const Homepage = () => {
     let temp_videos = [];
     db.collection('videos')
       .orderBy('likes', 'desc')
+      .limit(8)
       .onSnapshot((querysnapShot) => {
         querysnapShot.forEach((doc) => {
           temp_videos.push({
