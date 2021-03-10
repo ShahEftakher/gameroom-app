@@ -27,8 +27,10 @@ const Forumpage = () => {
         upvote: 0,
         comments: [],
         avatarImg: currentUser.photoURL,
-        created_time: new Date().toLocaleTimeString(),
-        created_date: new Date().toLocaleDateString(),
+        createdAt: new Date().toISOString(),
+
+        // created_time: new Date().toLocaleTimeString(),
+        // created_date: new Date().toLocaleDateString(),
       })
       .then(() => {
         e.target.reset();
@@ -44,7 +46,7 @@ const Forumpage = () => {
     let data = [];
     console.log(data);
     db.collection('posts')
-      .orderBy('created_time', 'desc')
+      .orderBy('createdAt', 'desc')
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           data.push({ id: doc.id, post: doc.data() });

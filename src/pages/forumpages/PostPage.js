@@ -42,7 +42,7 @@ const PostPage = () => {
           </h6>
           <div className="card shadow-sm p-3 bg-body rounded">
             <div className="card-body">
-              <p>{post.created_time}</p>
+              <p>{post.createdAt}</p>
               <h3 className="card-title display-6">{post.body}</h3>
             </div>
           </div>

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.7.3",
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.4.0",
+    "dayjs": "^1.10.4",
     "firebase": "^8.2.9",
     "mediamachine": "^1.0.6",
     "react": "^17.0.1",

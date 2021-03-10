@@ -11,7 +11,7 @@ export default function Gallerypage() {
   const getVideos = async () => {
     let data = [];
     db.collection('videos')
-      .orderBy('created_time', 'desc')
+      .orderBy('createdAt', 'desc')
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           data.push({

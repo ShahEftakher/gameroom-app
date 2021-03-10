@@ -12,7 +12,7 @@ const Homepage = () => {
   const [mostLiked, setMostLiked] = useState([]);
   const loadVideos = async () => {
     db.collection('videos')
-      .orderBy('created_time', 'desc')
+      .orderBy('createdAt', 'desc')
       .limit(8)
       .onSnapshot((querysnapShot) => {
         let tempVideos = [];
