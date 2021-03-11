@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MentorStats = () => {
+const MentorStats = ({ totoalVideos }) => {
   return (
     <div className="p-1">
       <div className="container p-1">
@@ -17,7 +17,7 @@ const MentorStats = () => {
             style={{ backgroundColor: '#03fcdf' }}
           >
             <h3>Total videos</h3>
-            <p>150</p>
+            <p>{totoalVideos}</p>
           </div>
         </div>
         {/* <div className="row p-1">

@@ -9,7 +9,7 @@ const Profilecard = ({ userInfo }) => {
   const { currentUser } = useUserContext();
   const history = useHistory();
   return (
-    <Card className="border-0 shadow mb-2 me-2 bg-body rounded mt-2 p-3">
+    <Card className="border-0 shadow mb-2 me-2 bg-body rounded mt-3 p-3">
       <Card.Content className="d-flex justify-content-center">
         <Avatar
           src={currentUser.photoURL}
