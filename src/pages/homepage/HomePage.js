@@ -6,10 +6,12 @@ import UserContainer from '../../components/profile/UserContainer';
 import Usercard from '../../components/profile/Usercard';
 import { db } from '../../firebase';
 import { ToastContainer } from 'react-toastify';
+import { useUserContext } from '../../context/UserContext';
 
 const Homepage = () => {
   const [newVideos, setNewVideos] = useState([]);
   const [mostLiked, setMostLiked] = useState([]);
+  const { currentUser } = useUserContext();
   const loadVideos = async () => {
     db.collection('videos')
       .orderBy('createdAt', 'desc')
@@ -54,8 +56,16 @@ const Homepage = () => {
         <ToastContainer />
         <CarouselComp />
 
-        <VideoContainer videos={newVideos} title={'New Videos'} />
-        <VideoContainer videos={mostLiked} title={'Most Popular Videos'} />
+        <VideoContainer
+          videos={newVideos}
+          title={'New Videos'}
+          uid={currentUser}
+        />
+        <VideoContainer
+          videos={mostLiked}
+          title={'Most Popular Videos'}
+          uid={currentUser}
+        />
       </div>
     </div>
   );

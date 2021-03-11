@@ -61,7 +61,7 @@ const Profilepage = () => {
               {userInfo.role === 'mentor' ? <MentorStats /> : ''}
             </div>
             {userInfo.role === 'mentor' ? (
-              <VideoContainerV2 videos={videos} title={'My videos'} />
+              <VideoContainerV2 videos={videos} title={'My videos'} uid={userId}/>
             ) : (
               ''
             )}
