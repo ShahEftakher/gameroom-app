@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, Form, Header } from 'semantic-ui-react';
+import { Button, Form, Header, Message } from 'semantic-ui-react';
 import { Avatar } from '@material-ui/core';
 import Navbar from '../../components/common/Navbar';
 import { useUserContext } from '../../context/UserContext';
@@ -17,6 +17,7 @@ const Editprofile = () => {
   const history = useHistory();
   const [imageURL, setImageURL] = useState(null);
   const [userInfo, setUserInfo] = useState({});
+  const [userError, setUserError] = useState('');
 
   //handle file upload
   const handleChange = async (e) => {
@@ -33,7 +34,6 @@ const Editprofile = () => {
   };
 
   const profileUpdateToast = () => {
-    console.log('function called');
     toast.error('Profile updated!', {
       position: toast.POSITION.TOP_RIGHT,
     });
@@ -51,6 +51,7 @@ const Editprofile = () => {
 
   const handleSubmit = () => {
     if (!emailRef.current.value || !nameRef.current.value) {
+      setUserError('Email and Name cannot be empty');
       return;
     }
 
@@ -98,6 +99,11 @@ const Editprofile = () => {
             <Header className="mb-4" textAlign="center">
               Edit Profile
             </Header>
+            {userError ? (
+              <Message color="red">{JSON.stringify(userError)}</Message>
+            ) : (
+              ''
+            )}
             <Form onSubmit={handleSubmit}>
               <Form.Field className="d-flex justify-content-center">
                 <Avatar

@@ -11,7 +11,8 @@ const Login = () => {
   const passwordRef = useRef();
   const history = useHistory();
   const [error, setError] = useState();
-  const { login, setUserInfo, setIsLoggedIn } = useUserContext();
+  const [userError, setUserError] = useState('');
+  const { login, setIsLoggedIn } = useUserContext();
   const loginSuccessToast = () => {
     toast.error('Login Successful!', {
       position: toast.POSITION.TOP_RIGHT,
@@ -20,6 +21,10 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!emailRef.current.value || !passwordRef.current.value) {
+      setUserError('Enter email and password');
+      return;
+    }
     login(emailRef.current.value, passwordRef.current.value)
       .then(() => {
         setIsLoggedIn(true);
@@ -34,13 +39,22 @@ const Login = () => {
   return (
     <div>
       <Navbar />
+      <ToastContainer />
       <div className="d-flex justify-content-center mt-5 mt-5">
-        <ToastContainer />
-        <div className="shadow p-3 mb-5 bg-body rounded mt-5">
+        <div className="shadow p-3 mb-5 bg-body rounded mt-5 w-25">
           <Header className="mt-3" size="large" textAlign="center">
             Login
           </Header>
-          {error ? <Message color="red">{JSON.stringify(error)}</Message> : ''}
+          {error ? (
+            <Message color="red">{JSON.stringify(error.message)}</Message>
+          ) : (
+            ''
+          )}
+          {userError ? (
+            <Message color="red">{JSON.stringify(userError)}</Message>
+          ) : (
+            ''
+          )}
           <Form onSubmit={handleSubmit}>
             <Form.Field>
               <label>Email</label>

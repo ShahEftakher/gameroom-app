@@ -56,6 +56,7 @@ const VideoPage = (props) => {
         <div className="row">
           <div className="col">
             <h2 className="text-capitalize">{videoData.title}</h2>
+            <p className="text-muted">Uploaded at: {videoData.created_time}</p>
           </div>
           <div className="col d-flex justify-content-end">
             <button
@@ -70,7 +71,7 @@ const VideoPage = (props) => {
           </div>
         </div>
         <hr></hr>
-        <p className="mb-2 fs-5 fw-lighter">{videoData.description}</p>
+        <p className="mb-2 fs-5 fw-lighter text-capitalize">{videoData.description}</p>
         <p>
           <Link to={'/userProfile/' + videoData.uid}>
             <h2>{videoData.userName}</h2>

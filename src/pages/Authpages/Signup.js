@@ -25,6 +25,10 @@ const Signup = () => {
       setError('Please select a role');
       return;
     }
+    if (passwordRef.current.value.length < 6) {
+      setError('Password must be 6 character long');
+      return;
+    }
     if (
       emailRef.current.value &&
       passwordRef.current.value &&
@@ -70,6 +74,7 @@ const Signup = () => {
             });
         })
         .catch((err) => {
+          setError(err);
           console.log(err);
         });
     } else {
@@ -89,15 +94,12 @@ const Signup = () => {
   return (
     <div>
       <Navbar />
-      <div
-        className="position-absolute top-50 start-50 translate-middle"
-        style={{ minWidth: '25%' }}
-      >
-        <div className="shadow p-3 mb-5 bg-body rounded ">
+      <div className="d-flex justify-content-center mt-4">
+        <div className="shadow p-3 mb-5 bg-body rounded w-25">
           <Header className="" size="large" textAlign="center">
             Sign up
           </Header>
-          {error ? <Message color="red">{JSON.stringify(error)}</Message> : ''}
+          {error ? <Message color="red">{JSON.stringify(error.message)}</Message> : ''}
           <Form onSubmit={handleSubmit}>
             <Form.Field>
               <label>Email</label>
@@ -109,7 +111,11 @@ const Signup = () => {
             </Form.Field>
             <Form.Field>
               <label>Password</label>
-              <input type="password" placeholder="Password" ref={passwordRef} />
+              <input
+                type="password"
+                placeholder="Password(Minimum 6 character long)"
+                ref={passwordRef}
+              />
             </Form.Field>
             <Form.Field>
               <label>Confirm Password</label>

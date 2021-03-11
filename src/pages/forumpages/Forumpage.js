@@ -4,6 +4,8 @@ import ForumPost from '../../components/forum/ForumPost';
 import Navbar from '../../components/common/Navbar';
 import { useUserContext } from '../../context/UserContext';
 import { db } from '../../firebase';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 const Forumpage = () => {
   const { currentUser } = useUserContext();
@@ -14,9 +16,16 @@ const Forumpage = () => {
     setNewPost(e.target.value);
   };
 
+  const errorToast = () => {
+    toast.info('Write your post!', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newPost) {
+      errorToast();
       return;
     }
     db.collection('posts')
@@ -29,8 +38,8 @@ const Forumpage = () => {
         avatarImg: currentUser.photoURL,
         createdAt: new Date().toISOString(),
 
-        // created_time: new Date().toLocaleTimeString(),
-        // created_date: new Date().toLocaleDateString(),
+        created_time: new Date().toLocaleTimeString(),
+        created_date: new Date().toLocaleDateString(),
       })
       .then(() => {
         e.target.reset();
@@ -63,6 +72,7 @@ const Forumpage = () => {
   return (
     <div>
       <Navbar />
+      <ToastContainer />
       {currentUser ? (
         <div className="mb-4 d-flex justify-content-center">
           <Form
@@ -90,7 +100,7 @@ const Forumpage = () => {
       ) : (
         ''
       )}
-      <div className='mb-4'>
+      <div className="mb-4">
         {posts.map((post) => {
           return <ForumPost id={post.id} post={post.post} />;
         })}

@@ -40,7 +40,7 @@ const Navbar = () => {
         <Button
           className="w-100 mb-1 me-1"
           onClick={() => {
-            history.push('/videos');
+            history.push('/gallery');
           }}
         >
           Videos

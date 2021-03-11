@@ -12,7 +12,7 @@ const VideoComment = ({ comment }) => {
             <Comment.Author as="a">{comment.author}</Comment.Author>
           </Link>
           <Comment.Metadata>
-            <span>{comment.createdAt}</span>
+            <span>{comment.created_time}</span>
           </Comment.Metadata>
           <Comment.Text>{comment.body}</Comment.Text>
         </Comment.Content>
