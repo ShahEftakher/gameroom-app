@@ -2,25 +2,19 @@
         left
 ======================
 ui design
-follower(db)***i want to check only one collection***
 
-toastify??? why not working??
 
-pagination
+/** pagination **/
 edit post
 delete post
 
-
-forum:
-forum color different??
-upvote???
 
 =======================
         By today
 =======================
 
 -----------------------
-**mentor stats
+
 ****forum posts on profile page
 ***video thumbnail
 
@@ -55,9 +49,12 @@ edit uploaded video
 limit video retrieve
 redirect to all videos page
 email verification of content creator
+password reset module
+forgot password module
+**mentor stats
 
 **** fix profile page ****
-- ** send useinfo req every update
+- ** send userinfo req every update
 - ** call for video after that
 - ** on querySnapshot video from db for profile 
 
