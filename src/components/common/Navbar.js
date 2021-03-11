@@ -4,15 +4,10 @@ import { useUserContext } from '../../context/UserContext';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Button, Dropdown, Header } from 'semantic-ui-react';
 import Logo from '../../image/logo.png';
+import Text from '../../image/text.png';
 
 const Navbar = () => {
-  const {
-    setUserInfo,
-    logout,
-    setIsLoggedIn,
-    currentUser,
-    userInfo,
-  } = useUserContext();
+  const { setUserInfo, logout, setIsLoggedIn, currentUser } = useUserContext();
 
   const history = useHistory();
   if (currentUser) {
@@ -90,10 +85,10 @@ const Navbar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light shadow p-3 mb-1"
-      style={{ height: '80px', backgroundColor: '#ff4d4d' }}
+      style={{ height: '80px', backgroundColor: '#ff6666' }}
     >
-      <div className="container-fluid justify-content-end">
-        <button
+      <div className="container-fluid justify-content-center">
+        {/* <button
           className="navbar-toggler "
           type="button"
           data-bs-toggle="collapse"
@@ -101,12 +96,26 @@ const Navbar = () => {
           aria-controls="navbarNavAltMarkup"
           aria-expanded="false"
           aria-label="Toggle navigation"
+        > */}
+        <div
+          className="navbar-toggler border-0"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+          <Link className="navbar-brand" to="/">
+            <img src={Logo} style={{ width: '10%' }} />
+            <img src={Text} style={{ height: '15%', width: '50%' }} />
+          </Link>
+        </div>
+        {/* </button> */}
+
         <div className="collapse navbar-collapse justify-content-start">
-          <Link className="navbar-brand fs-1" to="/">
-            <img src={Logo} style={{ height: '15%', width: '15%' }} />
+          <Link className="navbar-brand" to="/">
+            <img src={Logo} style={{ height: '15%', width: '10%' }} />
+            <img src={Text} style={{ height: '15%', width: '50%' }} />
           </Link>
         </div>
         <div

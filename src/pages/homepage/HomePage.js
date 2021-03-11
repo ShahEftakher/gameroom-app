@@ -7,11 +7,16 @@ import Usercard from '../../components/profile/Usercard';
 import { db } from '../../firebase';
 import { ToastContainer } from 'react-toastify';
 import { useUserContext } from '../../context/UserContext';
+import Footer from '../../components/common/Footer';
 
 const Homepage = () => {
   const [newVideos, setNewVideos] = useState([]);
   const [mostLiked, setMostLiked] = useState([]);
   const { currentUser } = useUserContext();
+  const [users, setUsers] = useState([]);
+
+  const popularUser = [{ name: 'me0' }, { name: 'he' }];
+
   const loadVideos = async () => {
     db.collection('videos')
       .orderBy('createdAt', 'desc')
@@ -44,9 +49,29 @@ const Homepage = () => {
       });
   };
 
+  const getUser = () => {
+    let temp_user = [];
+    db.collection('users')
+      .limit(3)
+      .get()
+      .then((docs) => {
+        docs.forEach((doc) => {
+          temp_user.push({
+            id: doc.id,
+            user: doc.data(),
+          });
+        });
+        setUsers(temp_user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     loadVideos();
     getMostLikedVideo();
+    getUser()
   }, []);
 
   return (
@@ -55,18 +80,25 @@ const Homepage = () => {
       <div className="mx-3">
         <ToastContainer />
         <CarouselComp />
-
-        <VideoContainer
-          videos={newVideos}
-          title={'New Videos'}
-          uid={currentUser}
-        />
-        <VideoContainer
-          videos={mostLiked}
-          title={'Most Popular Videos'}
-          uid={currentUser}
-        />
+        <div className="d-flex">
+          <div className="w-75">
+            <VideoContainer
+              videos={newVideos}
+              title={'New Videos'}
+              uid={currentUser}
+            />
+            <VideoContainer
+              videos={mostLiked}
+              title={'Most Popular Videos'}
+              uid={currentUser}
+            />
+          </div>
+          <div className="w-25 d-flex justify-content-center">
+            {/* <UserContainer users={users} /> */}
+          </div>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

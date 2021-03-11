@@ -1,22 +1,13 @@
-import React from "react";
-import { Icon, Card, Image } from "semantic-ui-react";
+import React from 'react';
+import { Icon, Card, Image } from 'semantic-ui-react';
 
-const Usercard = (props) => {
+const Usercard = ({ user }) => {
+  console.log(user.user);
   return (
-    <Card>
-      <Image
-        src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-        wrapped
-        ui={false}
-      />
+    <Card className="w-75 h-75">
+      <Image src={user.user.profileImage} wrapped ui={false} />
       <Card.Content>
-        <Card.Header>Nobody</Card.Header>
-        <Card.Meta>
-          <span className="date">Joined in 2015</span>
-        </Card.Meta>
-        <Card.Description>
-          Matthew is a musician living in Nashville.
-        </Card.Description>
+        <Card.Header>{user.user.name}</Card.Header>
       </Card.Content>
       <Card.Content extra>
         <a>
@@ -27,6 +18,5 @@ const Usercard = (props) => {
     </Card>
   );
 };
-
 
 export default Usercard;

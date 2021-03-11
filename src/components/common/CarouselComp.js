@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 const CarouselComp = () => {
   const history = useHistory();
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center shadow-sm p-3 mb-5 bg-body rounded">
       <Carousel className="p-3 me-2 d-block w-100">
         <Carousel.Item interval={1000}>
           <img

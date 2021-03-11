@@ -1,10 +1,19 @@
-import React from "react";
-import { Card } from "semantic-ui-react";
+import React from 'react';
+import { Card } from 'semantic-ui-react';
+import Usercard from './Usercard';
 
-const UserContainer = (props) => {
+const UserContainer = ({ users }) => {
+  console.log(users);
   return (
-    <div class="col-md-2 border border-dark p-2 ms-1 mt-2">
-      <Card.Group itemsPerRow={1}>{props.children}</Card.Group>
+    <div class="">
+      <Card.Group
+        className="d-flex justify-content-center mb-5"
+        itemsPerRow={1}
+      >
+        {users.map((user) => {
+          return <Usercard userData={user} key={user.user.uid} />;
+        })}
+      </Card.Group>
     </div>
   );
 };

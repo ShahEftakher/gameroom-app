@@ -9,7 +9,7 @@ const VideoContainer = ({ videos, title, uid }) => {
   const { currentUser } = useUserContext();
 
   return (
-    <div class="col-md-9 border p-3 mt-2 w-100 shadow p-3 mb-5 bg-body rounded">
+    <div className="shadow p-3 mb-5 bg-body rounded ms-3">
       <h2 className="">{title}</h2>
       <Card.Group itemsPerRow={4}>
         {videos.map((video) => {
