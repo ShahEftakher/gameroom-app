@@ -19,7 +19,7 @@ const Uploadvideo = () => {
   const [disabled, setDisable] = useState({});
   let [progress, setProgress] = useState(null);
   const history = useHistory();
-  const [thumbnail, setThumnail] = useState(null);
+  const [thumbnail, setThumbnail] = useState(null);
 
   const handleChange = async (e) => {
     setDisable({ disabled: 'disabled' });
@@ -50,7 +50,7 @@ const Uploadvideo = () => {
     const storageRef = storage.ref();
     const thumbRef = storageRef.child(videoThumb.name);
     await thumbRef.put(videoThumb);
-    setThumnail(await thumbRef.getDownloadURL());
+    setThumbnail(await thumbRef.getDownloadURL());
   };
 
   const handleSelect = (event, data) => {
