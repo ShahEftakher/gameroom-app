@@ -16,7 +16,8 @@ delete post
 -----------------------
 
 ****forum posts on profile page
-***video thumbnail
+***video thumbnail:
+        - Let the user upload their thumbnail
 
 
 ***********************

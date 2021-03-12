@@ -21,7 +21,7 @@ const Signup = () => {
       setError('Passwords do not match!');
       return;
     }
-    if (role !== 'mentor' && role !== 'student') {
+    if (role !== 'Content Creator' && role !== 'student') {
       setError('Please select a role');
       return;
     }
@@ -56,7 +56,7 @@ const Signup = () => {
               bio: '',
             })
             .then(() => {
-              if (role !== 'mentor') {
+              if (role !== 'Content Creator') {
                 history.push('/');
                 return;
               }
@@ -87,8 +87,8 @@ const Signup = () => {
   };
 
   const userRole = [
-    { key: 'student', value: 'student', text: 'Student' },
-    { key: 'pro', value: 'mentor', text: 'Mentor' },
+    { key: 'Viewer', value: 'Viewer', text: 'Viewer' },
+    { key: 'Content Creator', value: 'Content Creator', text: 'Content Creator' },
   ];
 
   return (

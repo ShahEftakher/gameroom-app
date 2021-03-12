@@ -87,6 +87,7 @@ export default function Gallerypage() {
   };
 
   useEffect(() => {
+    setVideos([]);
     getVideos();
   }, []);
 

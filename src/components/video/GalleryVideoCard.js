@@ -46,7 +46,7 @@ export default function GalleryVideo({ id, video }) {
         <Card className={classes.root}>
           <CardMedia
             className={classes.cover}
-            image="https://picsum.photos/200/300"
+            image={video.thumbnail}
             title={video.category}
           />
           <div className={classes.details}>

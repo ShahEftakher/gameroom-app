@@ -19,6 +19,7 @@ const Uploadvideo = () => {
   const [disabled, setDisable] = useState({});
   let [progress, setProgress] = useState(null);
   const history = useHistory();
+  const [thumbnail, setThumnail] = useState(null);
 
   const handleChange = async (e) => {
     setDisable({ disabled: 'disabled' });
@@ -42,6 +43,14 @@ const Uploadvideo = () => {
         setLoading({});
       }
     );
+  };
+
+  const handleThumbnail = async (e) => {
+    const videoThumb = e.target.files[0];
+    const storageRef = storage.ref();
+    const thumbRef = storageRef.child(videoThumb.name);
+    await thumbRef.put(videoThumb);
+    setThumnail(await thumbRef.getDownloadURL());
   };
 
   const handleSelect = (event, data) => {
@@ -90,7 +99,7 @@ const Uploadvideo = () => {
         videoUrl: videoUrl,
         userName: currentUser.displayName,
         createdAt: new Date().toISOString(),
-
+        thumbnail: thumbnail,
         created_time: new Date().toLocaleTimeString(),
         created_date: new Date().toLocaleDateString(),
         likes: 0,
@@ -112,7 +121,18 @@ const Uploadvideo = () => {
       <div className="row align-items-center">
         <div className="d-flex justify-content-center">
           <div className="w-75">
-            {videoUrl ? <Videoplayer url={videoUrl} /> : ''}
+            {videoUrl ? (
+              <div className="row">
+                <div className="col">
+                  <Videoplayer url={videoUrl} />
+                </div>
+                <div className="col d-flex justify-content-center w-75 h-50">
+                  <img src={thumbnail} />
+                </div>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
         <div class="d-flex justify-content-center mt-5 mb-5">
@@ -128,7 +148,12 @@ const Uploadvideo = () => {
               </div>
             )}
             <Form.Field>
+              <label>Add video</label>
               <input type="file" onChange={handleChange} accept="video/*" />
+            </Form.Field>
+            <Form.Field>
+              <label>Add Thumbnail for video</label>
+              <input type="file" onChange={handleThumbnail} accept="image/*" />
             </Form.Field>
             <Form.Field>
               <label>Video Title</label>

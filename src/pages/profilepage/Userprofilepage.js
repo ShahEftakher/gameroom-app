@@ -54,7 +54,7 @@ const UserprofilePage = () => {
         <div class="row">
           <div class="col-sm-3">{<Userprofile userInfo={userInfo} />}</div>
           <div class="col-sm-9">
-            {userInfo.role === 'mentor' ? (
+            {userInfo.role === 'Content Creator' ? (
               <VideoContainer videos={videos} title={'My videos'} />
             ) : (
               ''

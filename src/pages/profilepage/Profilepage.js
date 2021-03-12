@@ -58,9 +58,9 @@ const Profilepage = () => {
           <div class="col-sm-9">
             <div class="row">
               {/*condtionally rendered based on role*/}
-              {userInfo.role === 'mentor' ? <MentorStats totoalVideos={videos.length}/> : ''}
+              {userInfo.role === 'Content Creator' ? <MentorStats totoalVideos={videos.length}/> : ''}
             </div>
-            {userInfo.role === 'mentor' ? (
+            {userInfo.role === 'Content Creator' ? (
               <VideoContainerV2 videos={videos} title={'My videos'} uid={userId}/>
             ) : (
               ''
