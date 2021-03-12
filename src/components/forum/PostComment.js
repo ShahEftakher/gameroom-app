@@ -19,11 +19,6 @@ const PostComment = ({ comment }) => {
             <Comment.Text>{comment.body}</Comment.Text>
           </Comment.Content>
         </Comment>
-        <div className="col-sm-4 mt-4">
-          <Button type="button" color="red" style={{ marginLeft: '55%' }}>
-            <FavoriteBorderIcon />
-          </Button>
-        </div>
       </div>
     </div>
   );
