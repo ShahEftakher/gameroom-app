@@ -14,27 +14,30 @@ const Signup = () => {
   const history = useHistory();
   const [error, setError] = useState('');
   const { signup } = useUserContext();
+  const [userError, setUserError] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setError('Passwords do not match!');
+      setUserError('Passwords do not match!');
       return;
     }
-    if (role !== 'Content Creator' && role !== 'student') {
-      setError('Please select a role');
+    if (role !== 'Content Creator' && role !== 'Viewer') {
+      setUserError('Please select a role');
       return;
     }
     if (passwordRef.current.value.length < 6) {
-      setError('Password must be 6 character long');
+      setUserError('Password must be 6 character long');
       return;
     }
     if (
-      emailRef.current.value &&
-      passwordRef.current.value &&
-      confirmPasswordRef.current.value &&
-      nameRef.current.value
+      !emailRef.current.value ||
+      !passwordRef.current.value ||
+      !confirmPasswordRef.current.value ||
+      !nameRef.current.value
     ) {
+      setUserError('Fields cannot be empty');
+    } else {
       signup(
         emailRef.current.value,
         passwordRef.current.value,
@@ -77,8 +80,6 @@ const Signup = () => {
           setError(err);
           console.log(err);
         });
-    } else {
-      setError('Fields cannot be empty');
     }
   };
 
@@ -88,7 +89,11 @@ const Signup = () => {
 
   const userRole = [
     { key: 'Viewer', value: 'Viewer', text: 'Viewer' },
-    { key: 'Content Creator', value: 'Content Creator', text: 'Content Creator' },
+    {
+      key: 'Content Creator',
+      value: 'Content Creator',
+      text: 'Content Creator',
+    },
   ];
 
   return (
@@ -99,7 +104,16 @@ const Signup = () => {
           <Header className="" size="large" textAlign="center">
             Sign up
           </Header>
-          {error ? <Message color="red">{JSON.stringify(error.message)}</Message> : ''}
+          {error ? (
+            <Message color="red">{JSON.stringify(error.message)}</Message>
+          ) : (
+            ''
+          )}
+          {userError ? (
+            <Message color="red">{JSON.stringify(userError)}</Message>
+          ) : (
+            ''
+          )}
           <Form onSubmit={handleSubmit}>
             <Form.Field>
               <label>Email</label>
