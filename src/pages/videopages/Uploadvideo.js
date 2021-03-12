@@ -72,7 +72,7 @@ const Uploadvideo = () => {
   ];
 
   const uploadSuccessToast = () => {
-    toast.error('Video uploaded!', {
+    toast.success('Video uploaded!', {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
@@ -83,10 +83,30 @@ const Uploadvideo = () => {
     });
   };
 
+  const errorToastNoVideo = () => {
+    toast.warning('Add your video', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
+  const errorToastCategory = () => {
+    toast.warning('Select a category', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!description || !title) {
       errorToast();
+      return;
+    }
+    if (!category) {
+      errorToastCategory();
+      return;
+    }
+    if (!videoUrl) {
+      errorToastNoVideo();
       return;
     }
     setDisable({ disabled: 'disabled' });

@@ -4,6 +4,7 @@ import GalleryVideo from '../../components/video/GalleryVideoCard';
 import Navbar from '../../components/common/Navbar';
 import VideoFilter from '../../components/video/VideoFilter';
 import { db } from '../../firebase';
+import Footer from '../../components/common/Footer';
 
 export default function Gallerypage() {
   const [videos, setVideos] = useState([]);
@@ -92,24 +93,27 @@ export default function Gallerypage() {
   }, []);
 
   return (
-    <div>
-      <Navbar />
-      <div className="d-flex justify-content-end me-5">
-        <VideoFilter
-          getPopularVideo={getPopularVideo}
-          getNewestVideo={getVideos}
-        />
-        <CategoryFilter
-          getVideosByValorant={getVideosByValorant}
-          getVideosByR6={getVideosByR6}
-          getVideosCSGO={getVideosCSGO}
-        />
+    <>
+      <div>
+        <Navbar />
+        <div className="d-flex justify-content-end me-5">
+          <VideoFilter
+            getPopularVideo={getPopularVideo}
+            getNewestVideo={getVideos}
+          />
+          <CategoryFilter
+            getVideosByValorant={getVideosByValorant}
+            getVideosByR6={getVideosByR6}
+            getVideosCSGO={getVideosCSGO}
+          />
+        </div>
+        <div className="mt-3">
+          {videos.map((video) => {
+            return <GalleryVideo id={video.id} video={video.data} />;
+          })}
+        </div>
       </div>
-      <div className="mt-3">
-        {videos.map((video) => {
-          return <GalleryVideo id={video.id} video={video.data} />;
-        })}
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 }

@@ -5,6 +5,7 @@ ui design
 
 
 /** pagination **/
+****forum posts on profile page
 edit post
 delete post
 
@@ -15,9 +16,8 @@ delete post
 
 -----------------------
 
-****forum posts on profile page
-***video thumbnail:
-        - Let the user upload their thumbnail
+
+
 
 
 ***********************
@@ -58,6 +58,9 @@ forgot password module
 - ** send userinfo req every update
 - ** call for video after that
 - ** on querySnapshot video from db for profile 
+
+***video thumbnail:
+        - Let the user upload their thumbnail
 
 forum:
 post 
