@@ -10,6 +10,7 @@ const Videocard = ({ data, id }) => {
       image={data.thumbnail}
       header={data.title}
       description={data.description}
+      extra={data.userName}
       onClick={() => {
         history.push('/video/' + id);
       }}

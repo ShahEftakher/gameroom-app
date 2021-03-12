@@ -37,7 +37,8 @@ const Userprofile = ({ userInfo }) => {
         </Card.Description>
       </Card.Content>
       <div className="d-flex justify-content-end mb-5">
-        {userInfo.role === 'Content Creator' ? (
+        {userInfo.role === 'Content Creator' &&
+        userInfo.uid !== currentUser.uid ? (
           <Button color="green" onClick={handleClick}>
             {' '}
             Follow{' '}

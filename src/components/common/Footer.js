@@ -148,7 +148,7 @@ const Footer = () => {
             variant="body2"
             align="center"
           >
-            Copyright ©{' '}
+            Gameroom 2.0 ©{' '}
             <Link href="https://esd.com" variant="body2" color="inherit">
               {'ESD'}
             </Link>
