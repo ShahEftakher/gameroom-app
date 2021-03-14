@@ -60,7 +60,7 @@ const Profilepage = () => {
             <div class="row">
               {/*condtionally rendered based on role*/}
               {userInfo.role === 'Content Creator' ? (
-                <MentorStats />
+                <MentorStats totoalVideos={videos.length} />
               ) : userInfo.role === 'Viewer' ? (
                 <PostContainer uid={userId} />
               ) : (
