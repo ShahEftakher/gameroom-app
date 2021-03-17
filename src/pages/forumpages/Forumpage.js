@@ -5,7 +5,7 @@ import Navbar from '../../components/common/Navbar';
 import { useUserContext } from '../../context/UserContext';
 import { db } from '../../firebase';
 import { toast, ToastContainer } from 'react-toastify';
-
+import Footer from '../../components/common/Footer';
 
 const Forumpage = () => {
   const { currentUser } = useUserContext();
@@ -100,11 +100,17 @@ const Forumpage = () => {
       ) : (
         ''
       )}
+
       <div className="mb-4">
+        <div className="p-3">
+          <h2>Posts</h2>
+          <hr></hr>
+        </div>
         {posts.map((post) => {
           return <ForumPost id={post.id} post={post.post} />;
         })}
       </div>
+      <Footer />
     </div>
   );
 };

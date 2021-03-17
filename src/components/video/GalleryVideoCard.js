@@ -64,14 +64,11 @@ export default function GalleryVideo({ id, video }) {
             <div className={classes.controls}>
               <IconButton>
                 {video.likes + ' '}
-                <FavoriteTwoToneIcon color="secondary" />
+                <FavoriteTwoToneIcon color="primary" />
               </IconButton>
-              <IconButton>
-                <VisibilityTwoToneIcon style={{ color: orange[500] }} />
-              </IconButton>
-              <IconButton>
+              {/*<IconButton>
                 <ModeCommentTwoToneIcon color="primary" />
-              </IconButton>
+              </IconButton>*/}
             </div>
           </div>
         </Card>

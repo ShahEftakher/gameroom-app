@@ -5,6 +5,7 @@ import MentorStats from '../../components/profile/MentorStats';
 import { db } from '../../firebase';
 import { toast, ToastContainer } from 'react-toastify';
 import VideoContainerV2 from '../../components/video/editVideo/VideoContainerV2';
+import PostContainer from '../../components/forum/PostContainer';
 
 const Profilepage = () => {
   const userId = window.location.pathname.split('/').pop();
@@ -58,10 +59,20 @@ const Profilepage = () => {
           <div class="col-sm-9">
             <div class="row">
               {/*condtionally rendered based on role*/}
-              {userInfo.role === 'Content Creator' ? <MentorStats totoalVideos={videos.length}/> : ''}
+              {userInfo.role === 'Content Creator' ? (
+                <MentorStats totoalVideos={videos.length} />
+              ) : userInfo.role === 'Viewer' ? (
+                <PostContainer uid={userId} />
+              ) : (
+                ''
+              )}
             </div>
             {userInfo.role === 'Content Creator' ? (
-              <VideoContainerV2 videos={videos} title={'My videos'} uid={userId}/>
+              <VideoContainerV2
+                videos={videos}
+                title={'My videos'}
+                uid={userId}
+              />
             ) : (
               ''
             )}

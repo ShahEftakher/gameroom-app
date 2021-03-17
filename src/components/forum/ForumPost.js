@@ -12,7 +12,7 @@ const ForumPost = ({ id, post }) => {
       <Link
         className='text-decoration-none'
         style={{ color: 'black' }}
-        to={'forum/post/' + id}
+        to={'/forum/post/' + id}
       >
         <Card fluid color='orange' header='Option 2' onClick={() => {}}>
           <h6 className='card-header d-flex'>

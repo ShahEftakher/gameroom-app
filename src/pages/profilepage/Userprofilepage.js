@@ -4,6 +4,7 @@ import { db } from '../../firebase';
 import VideoContainer from '../../components/video/VideoContainer';
 import { ToastContainer } from 'react-toastify';
 import Userprofile from '../../components/profile/UserProfile';
+import PostContainer from '../../components/forum/PostContainer';
 
 const UserprofilePage = () => {
   const userId = window.location.pathname.split('/').pop();
@@ -57,7 +58,7 @@ const UserprofilePage = () => {
             {userInfo.role === 'Content Creator' ? (
               <VideoContainer videos={videos} title={'My videos'} />
             ) : (
-              ''
+              <PostContainer uid={userId} />
             )}
           </div>
         </div>

@@ -84,7 +84,7 @@ const Homepage = () => {
           <div className="w-75">
             <VideoContainer
               videos={newVideos}
-              title={'New Videos'}
+              title={'Latest Videos'}
               uid={currentUser}
             />
             <VideoContainer
