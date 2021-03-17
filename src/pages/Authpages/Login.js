@@ -20,9 +20,18 @@ const Login = () => {
   };
 
   const handleSubmit = (event) => {
+    setUserError('');
+    setError('');
     event.preventDefault();
-    if (!emailRef.current.value || !passwordRef.current.value) {
+    if (!emailRef.current.value && !passwordRef.current.value) {
       setUserError('Enter email and password');
+      return;
+    }
+    if (!emailRef.current.value) {
+      setUserError('Enter email!');
+    }
+    if (!passwordRef.current.value) {
+      setUserError('Enter password');
       return;
     }
     login(emailRef.current.value, passwordRef.current.value)
@@ -32,6 +41,7 @@ const Login = () => {
         history.push('/');
       })
       .catch((err) => {
+        setUserError('');
         setError(err);
       });
   };
