@@ -18,8 +18,13 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setUserError('Passwords do not match!');
+    if (
+      !emailRef.current.value ||
+      !passwordRef.current.value ||
+      !confirmPasswordRef.current.value ||
+      !nameRef.current.value
+    ) {
+      setUserError('Fields cannot be empty');
       return;
     }
     if (role !== 'Content Creator' && role !== 'Viewer') {
@@ -30,57 +35,54 @@ const Signup = () => {
       setUserError('Password must be 6 character long');
       return;
     }
-    if (
-      !emailRef.current.value ||
-      !passwordRef.current.value ||
-      !confirmPasswordRef.current.value ||
-      !nameRef.current.value
-    ) {
-      setUserError('Fields cannot be empty');
-    } else {
-      signup(
-        emailRef.current.value,
-        passwordRef.current.value,
-        nameRef.current.value,
-        role
-      )
-        .then((userCreds) => {
-          console.log(userCreds);
-          userCreds.user.updateProfile({
-            displayName: nameRef.current.value,
-          });
-          db.collection('users')
-            .doc(userCreds.user.uid)
-            .set({
-              uid: userCreds.user.uid,
-              name: nameRef.current.value,
-              email: emailRef.current.value,
-              role: role,
-              bio: '',
-            })
-            .then(() => {
-              if (role !== 'Content Creator') {
-                history.push('/');
-                return;
-              }
-              auth.currentUser
-                .sendEmailVerification()
-                .then(() => {
-                  history.push('/');
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          setError(err);
-          console.log(err);
-        });
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      setUserError('Passwords do not match!');
+      return;
     }
+
+    signup(
+      emailRef.current.value,
+      passwordRef.current.value,
+      nameRef.current.value,
+      role
+    )
+      .then((userCreds) => {
+        console.log(userCreds);
+        userCreds.user.updateProfile({
+          displayName: nameRef.current.value,
+        });
+        db.collection('users')
+          .doc(userCreds.user.uid)
+          .set({
+            uid: userCreds.user.uid,
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            role: role,
+            bio: '',
+          })
+          .then(() => {
+            if (role !== 'Content Creator') {
+              history.push('/');
+              return;
+            }
+            auth.currentUser
+              .sendEmailVerification()
+              .then(() => {
+                history.push('/');
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        setUserError('');
+        setError(err);
+        console.log(err);
+      });
   };
 
   const handleSelect = (event, data) => {
