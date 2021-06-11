@@ -85,6 +85,7 @@ const Editprofile = () => {
       });
   };
 
+  /* eslint-disable */
   useEffect(() => {
     setImageURL(currentUser.photoURL);
     getUserInfo();

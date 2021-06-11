@@ -42,6 +42,7 @@ const UserprofilePage = () => {
       });
   };
 
+  /* eslint-disable */
   useEffect(() => {
     getUser(userId);
     getVideos();

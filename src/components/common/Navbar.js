@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useUserContext } from '../../context/UserContext';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Button, Dropdown, Header } from 'semantic-ui-react';
+import { Button, Dropdown } from 'semantic-ui-react';
 import Logo from '../../image/logo.png';
 import Text from '../../image/text.png';
 
@@ -106,16 +106,16 @@ const Navbar = () => {
           aria-label="Toggle navigation"
         >
           <Link className="navbar-brand" to="/">
-            <img src={Logo} style={{ width: '10%' }} />
-            <img src={Text} style={{ height: '15%', width: '50%' }} />
+            <img src={Logo} style={{ width: '10%' }} alt="" />
+            <img src={Text} style={{ height: '15%', width: '50%' }} alt="" />
           </Link>
         </div>
         {/* </button> */}
 
         <div className="collapse navbar-collapse justify-content-start">
           <Link className="navbar-brand" to="/">
-            <img src={Logo} style={{ height: '15%', width: '10%' }} />
-            <img src={Text} style={{ height: '15%', width: '50%' }} />
+            <img src={Logo} style={{ height: '15%', width: '10%' }} alt="" />
+            <img src={Text} style={{ height: '15%', width: '50%' }} alt="" />
           </Link>
         </div>
         <div

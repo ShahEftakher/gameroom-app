@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Comment } from 'semantic-ui-react';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import {  Comment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const PostComment = ({ comment }) => {

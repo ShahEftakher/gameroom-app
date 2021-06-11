@@ -42,6 +42,7 @@ const VideoPage = (props) => {
       });
   };
 
+  /* eslint-disable */
   useEffect(() => {
     getVideo(videoId);
   }, []);

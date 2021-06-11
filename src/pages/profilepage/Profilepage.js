@@ -3,7 +3,7 @@ import Navbar from '../../components/common/Navbar';
 import Profilecard from '../../components/profile/Profilecard';
 import MentorStats from '../../components/profile/MentorStats';
 import { db } from '../../firebase';
-import { toast, ToastContainer } from 'react-toastify';
+import {  ToastContainer } from 'react-toastify';
 import VideoContainerV2 from '../../components/video/editVideo/VideoContainerV2';
 import PostContainer from '../../components/forum/PostContainer';
 
@@ -44,6 +44,7 @@ const Profilepage = () => {
       });
   };
 
+  /* eslint-disable */
   useEffect(() => {
     getUserInfo(userId);
     getVideosUser();

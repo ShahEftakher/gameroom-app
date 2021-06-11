@@ -147,7 +147,7 @@ const Uploadvideo = () => {
                   <Videoplayer url={videoUrl} />
                 </div>
                 <div className="col d-flex justify-content-center w-75 h-50">
-                  <img src={thumbnail} />
+                  <img src={thumbnail} alt="" />
                 </div>
               </div>
             ) : (

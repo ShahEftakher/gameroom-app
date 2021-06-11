@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
 import { Avatar } from '@material-ui/core';
-import { db } from '../../firebase';
 import { useUserContext } from '../../context/UserContext';
 
 const Userprofile = ({ userInfo }) => {

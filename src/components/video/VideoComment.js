@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Comment, Header, Form, Button } from 'semantic-ui-react';
+import { Comment } from 'semantic-ui-react';
 
 const VideoComment = ({ comment }) => {
   return (

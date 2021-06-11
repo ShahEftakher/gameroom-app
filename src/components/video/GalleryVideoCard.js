@@ -5,10 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { orange } from '@material-ui/core/colors';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
-import VisibilityTwoToneIcon from '@material-ui/icons/VisibilityTwoTone';
-import ModeCommentTwoToneIcon from '@material-ui/icons/ModeCommentTwoTone';
 import { Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({

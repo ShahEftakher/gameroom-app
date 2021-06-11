@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Card, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
 import { db, storage } from '../../../firebase';
 import Videoplayer from './ModalVideoplayer';
@@ -9,7 +8,6 @@ const VideoEditCard = ({ data, id }) => {
   const [title, setTitle] = useState(data.title);
   const [description, setDescription] = useState(data.description);
   const [confirmModal, setConfirmModal] = useState(false);
-  const history = useHistory();
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);

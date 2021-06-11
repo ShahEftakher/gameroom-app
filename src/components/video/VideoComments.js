@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Comment, Header, Form, Button } from 'semantic-ui-react';
 import { useUserContext } from '../../context/UserContext';
 import { db } from '../../firebase';
@@ -67,6 +67,7 @@ const VideoComments = ({ videoId }) => {
       });
   };
 
+  /* eslint-disable */
   useEffect(() => {
     getComments();
   }, []);

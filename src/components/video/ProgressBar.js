@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import { Box, Typography } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 
 const BorderLinearProgress = withStyles(theme => ({
   root: {

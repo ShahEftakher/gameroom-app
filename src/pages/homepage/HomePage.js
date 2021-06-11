@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/common/Navbar';
 import CarouselComp from '../../components/common/CarouselComp';
 import VideoContainer from '../../components/video/VideoContainer';
-import UserContainer from '../../components/profile/UserContainer';
-import Usercard from '../../components/profile/Usercard';
 import { db } from '../../firebase';
 import { ToastContainer } from 'react-toastify';
 import { useUserContext } from '../../context/UserContext';
@@ -13,9 +11,9 @@ const Homepage = () => {
   const [newVideos, setNewVideos] = useState([]);
   const [mostLiked, setMostLiked] = useState([]);
   const { currentUser } = useUserContext();
+  // eslint-disable-next-line 
   const [users, setUsers] = useState([]);
 
-  const popularUser = [{ name: 'me0' }, { name: 'he' }];
 
   const loadVideos = async () => {
     db.collection('videos')

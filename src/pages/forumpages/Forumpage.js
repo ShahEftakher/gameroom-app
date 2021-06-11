@@ -64,7 +64,7 @@ const Forumpage = () => {
         data = [];
       });
   };
-
+/* eslint-disable */
   useEffect(() => {
     getPost();
   }, []);

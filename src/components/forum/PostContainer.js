@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ForumPost from '../../components/forum/ForumPost';
-import { useUserContext } from '../../context/UserContext';
 import { db } from '../../firebase';
 
 const PostContainer = ({ uid }) => {
-  const { currentUser } = useUserContext();
   const [posts, setPosts] = useState([]);
 
   const getPost = () => {
@@ -22,6 +20,7 @@ const PostContainer = ({ uid }) => {
       });
   };
 
+  /* eslint-disable */
   useEffect(() => {
     getPost();
   }, []);

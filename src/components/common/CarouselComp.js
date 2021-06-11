@@ -1,9 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import { useHistory } from 'react-router-dom';
 
 const CarouselComp = () => {
-  const history = useHistory();
   return (
     <div className="d-flex justify-content-center shadow-sm p-3 mb-5 bg-body rounded">
       <Carousel className="p-3 me-2 d-block w-100">

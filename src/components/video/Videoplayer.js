@@ -25,7 +25,6 @@ const format = (seconds) => {
 };
 
 let count = 0;
-const videoId = window.location.pathname.split('/').pop();
 
 function VideoPlayer(props) {
   const classes = useStyles();
