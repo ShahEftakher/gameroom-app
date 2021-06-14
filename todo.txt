@@ -1,10 +1,14 @@
 ======================
         left
 ======================
-ui design
+fix delete modal(use other UI libs)
+remove unused dependencies
 
+/* Backend */
+fix db
+add more collections
 
-/** pagination **/
+** pagination **
 ****forum posts on profile page
 edit post
 delete post
@@ -61,6 +65,8 @@ forgot password module
 
 ***video thumbnail:
         - Let the user upload their thumbnail
+
+ui design
 
 forum:
 post 
