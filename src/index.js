@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { UserContextProvider } from './context/UserContext';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <React.StrictMode>

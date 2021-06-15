@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Card, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
-import { db, storage } from '../../../firebase';
-import Videoplayer from './ModalVideoplayer';
+import React, { useState } from "react";
+import { Card, Button, Header, Icon, Form } from "semantic-ui-react";
+import { db, storage } from "../../../firebase";
+import Videoplayer from "./ModalVideoplayer";
+import { Modal } from "antd";
 
 const VideoEditCard = ({ data, id }) => {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ const VideoEditCard = ({ data, id }) => {
     fileRef
       .delete()
       .then(() => {
-        db.collection('videos')
+        db.collection("videos")
           .doc(id)
           .delete()
           .then(() => {
@@ -37,7 +38,7 @@ const VideoEditCard = ({ data, id }) => {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    db.collection('videos')
+    db.collection("videos")
       .doc(id)
       .update({
         title: title,
@@ -62,52 +63,52 @@ const VideoEditCard = ({ data, id }) => {
           setOpen(true);
         }}
       />
-      <div className="d-flex justify-content-center">
-        <div>
-          <Modal
-            onClose={() => setOpen(false)}
-            onOpen={() => setOpen(true)}
-            open={open}
-            className="mb-5"
-          >
-            <Modal.Content>
-              <Videoplayer url={data.videoUrl} />
-            </Modal.Content>
-            <Modal.Content scrolling>
-              <Form onSubmit={handleEdit}>
-                <Form.Field>
-                  <input
-                    type="text"
-                    onChange={handleTitleChange}
-                    defaultValue={data.title}
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <input
-                    type="text"
-                    onChange={handleDescriptionChange}
-                    defaultValue={data.description}
-                  />
-                </Form.Field>
-                <Button color="black" positive>
-                  Update
-                </Button>
-              </Form>
-              <Modal.Actions className="d-flex justify-content-end">
-                <Button
-                  content="Delete Video"
-                  labelPosition="right"
-                  color="red"
-                  icon="trash"
-                  onClick={() => {
-                    setConfirmModal(true);
-                  }}
-                />
-              </Modal.Actions>
-            </Modal.Content>
-          </Modal>
-        </div>
-      </div>
+
+      <Modal
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        onOk={() => {
+          setOpen(false);
+        }}
+        onCancel={() => {
+          setOpen(false);
+        }}
+        visible={open}
+        className="mb-5"
+      >
+        <Videoplayer url={data.videoUrl} />
+
+        <Form onSubmit={handleEdit}>
+          <Form.Field>
+            <input
+              type="text"
+              onChange={handleTitleChange}
+              defaultValue={data.title}
+            />
+          </Form.Field>
+          <Form.Field>
+            <input
+              type="text"
+              onChange={handleDescriptionChange}
+              defaultValue={data.description}
+            />
+          </Form.Field>
+          <Button color="black" positive>
+            Update
+          </Button>
+        </Form>
+
+        <Button
+          content="Delete Video"
+          labelPosition="right"
+          color="red"
+          icon="trash"
+          onClick={() => {
+            setConfirmModal(true);
+          }}
+        />
+      </Modal>
+
       <Modal
         closeIcon
         open={confirmModal}
