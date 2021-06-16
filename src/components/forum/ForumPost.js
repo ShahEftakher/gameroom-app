@@ -8,7 +8,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 const ForumPost = ({ id, post }) => {
   dayjs.extend(relativeTime)
   return (
-    <div className='mx-5 mt-3 mb-3 w-75'>
+    <div className='mt-3 mb-3'>
       <Link
         className='text-decoration-none'
         style={{ color: 'black' }}
