@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'semantic-ui-react';
-import ForumPost from '../../components/forum/ForumPost';
-import Navbar from '../../components/common/Navbar';
-import { useUserContext } from '../../context/UserContext';
-import { db } from '../../firebase';
-import { toast, ToastContainer } from 'react-toastify';
-import Footer from '../../components/common/Footer';
+import React, { useEffect, useState } from "react";
+import { Button, Form } from "semantic-ui-react";
+import ForumPost from "../../components/forum/ForumPost";
+import Navbar from "../../components/common/Navbar";
+import { useUserContext } from "../../context/UserContext";
+import { db } from "../../firebase";
+import { toast, ToastContainer } from "react-toastify";
+import Footer from "../../components/common/Footer";
 
 const Forumpage = () => {
   const { currentUser } = useUserContext();
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState('');
+  const [newPost, setNewPost] = useState("");
 
   const handleChange = (e) => {
     setNewPost(e.target.value);
   };
 
   const errorToast = () => {
-    toast.info('Write your post!', {
+    toast.info("Write your post!", {
       position: toast.POSITION.TOP_CENTER,
     });
   };
@@ -28,7 +28,7 @@ const Forumpage = () => {
       errorToast();
       return;
     }
-    db.collection('posts')
+    db.collection("posts")
       .add({
         uid: currentUser.uid,
         name: currentUser.displayName,
@@ -51,11 +51,11 @@ const Forumpage = () => {
 
   const getPost = () => {
     console.log(posts);
-    console.log('fml');
+    console.log("fml");
     let data = [];
     console.log(data);
-    db.collection('posts')
-      .orderBy('createdAt', 'desc')
+    db.collection("posts")
+      .orderBy("createdAt", "desc")
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           data.push({ id: doc.id, post: doc.data() });
@@ -64,7 +64,7 @@ const Forumpage = () => {
         data = [];
       });
   };
-/* eslint-disable */
+  /* eslint-disable */
   useEffect(() => {
     getPost();
   }, []);
@@ -98,7 +98,7 @@ const Forumpage = () => {
           </Form>
         </div>
       ) : (
-        ''
+        ""
       )}
 
       <div className="mb-4">
@@ -106,9 +106,11 @@ const Forumpage = () => {
           <h2>Posts</h2>
           <hr></hr>
         </div>
-        {posts.map((post) => {
-          return <ForumPost id={post.id} post={post.post} />;
-        })}
+        <div className="px-3">
+          {posts.map((post) => {
+            return <ForumPost id={post.id} post={post.post} />;
+          })}
+        </div>
       </div>
       <Footer />
     </div>
