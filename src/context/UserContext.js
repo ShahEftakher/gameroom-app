@@ -50,7 +50,7 @@ const UserContextProvider = (props) => {
   useEffect(() => {
     const unSubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      getUserInfo(user.uid);
+      // getUserInfo(user.uid);
     });
     return unSubscribe;
   }, []);
