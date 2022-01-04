@@ -14,7 +14,10 @@ const Homepage = () => {
   // eslint-disable-next-line 
   const [users, setUsers] = useState([]);
 
-
+/**
+ * to get all the videos
+ * state variable 'newVideos'
+ */
   const loadVideos = async () => {
     db.collection('videos')
       .orderBy('createdAt', 'desc')
@@ -31,6 +34,10 @@ const Homepage = () => {
       });
   };
 
+  /**
+   * to get the most liked videos
+   * stored in the state variable 'mostLiked'
+   */
   const getMostLikedVideo = async () => {
     let temp_videos = [];
     db.collection('videos')
@@ -47,6 +54,10 @@ const Homepage = () => {
       });
   };
 
+  /**
+   * idr what this does
+   * but nowhere used
+   */
   const getUser = () => {
     let temp_user = [];
     db.collection('users')

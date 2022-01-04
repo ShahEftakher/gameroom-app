@@ -52,6 +52,10 @@ const PostComments = ({ id }) => {
       });
   };
 
+  /**
+   * this is for getting the comments of the forum psots
+   * stored in the state variable comments
+   */
   const getComments = () => {
     let data;
     db.collection('posts')

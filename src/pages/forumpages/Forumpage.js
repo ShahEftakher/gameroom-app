@@ -49,6 +49,11 @@ const Forumpage = () => {
       });
   };
 
+  /**
+   * current build is using this to get the posts and storing it in the state variable
+   * state varibale is called 'posts'
+   * this variable gets updated so this variable has to be tracked or smth
+   */
   const getPost = () => {
     console.log(posts);
     console.log("fml");

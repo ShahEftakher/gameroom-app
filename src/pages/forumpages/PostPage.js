@@ -10,6 +10,14 @@ const PostPage = () => {
   const postId = window.location.pathname.split('/').pop();
   console.log(postId);
   const [post, setPost] = useState({});
+
+  /**
+   * 
+   * @param {*} id specific post id
+   * current build is using this to get the posts and storing it in the state variable
+   * state varibale is called 'post'
+   * this variable gets updated so this variable has to be tracked or smth
+   */
   const getPost = (id) => {
     let temp_post;
     db.collection('posts')
