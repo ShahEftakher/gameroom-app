@@ -83,21 +83,19 @@ const PostComments = ({ id }) => {
       >
         <Header as="h3">Comments</Header>
         <hr></hr>
-        {currentUser ? (
-          <Form className="mt-4" onSubmit={handleSubmit}>
-            <Form.TextArea onChange={handleChange} />
-            <div className="d-flex justify-content-end">
-              <Button
-                content="Add Comment"
-                labelPosition="right"
-                icon="edit"
-                primary
-              />
-            </div>
-          </Form>
-        ) : (
-          ''
-        )}
+
+        <Form className="mt-4" onSubmit={handleSubmit}>
+          <Form.TextArea onChange={handleChange} />
+          <div className="d-flex justify-content-end">
+            <Button
+              content="Add Comment"
+              labelPosition="right"
+              icon="edit"
+              primary
+            />
+          </div>
+        </Form>
+
         {comments.map((comment) => {
           return <PostComment comment={comment} />;
         })}
