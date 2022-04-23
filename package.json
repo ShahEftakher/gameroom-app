@@ -12,7 +12,7 @@
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.4.0",
     "dayjs": "^1.10.4",
-    "firebase": "^8.2.9",
+    "firebase": "^9.6.11",
     "mediamachine": "^1.0.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
@@ -24,6 +24,7 @@
     "screenfull": "^5.1.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
+    "swr-firestore-v9": "^1.0.5",
     "video-react": "^0.14.1",
     "web-vitals": "^1.1.0"
   },

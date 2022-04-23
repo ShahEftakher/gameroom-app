@@ -4,15 +4,15 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "semantic-ui-css/semantic.min.css";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContextProvider } from "./context/UserContext";
+// import { UserContextProvider } from "./context/UserContext";
 import "antd/dist/antd.css";
 import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserContextProvider>
+    {/* <UserContextProvider> */}
       <App />
-    </UserContextProvider>
+    {/* </UserContextProvider> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
