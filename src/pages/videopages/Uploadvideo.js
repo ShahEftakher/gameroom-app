@@ -136,7 +136,7 @@ const Uploadvideo = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <ToastContainer />
       <div className="row align-items-center">
         <div className="d-flex justify-content-center">

@@ -100,7 +100,7 @@ const Signup = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="d-flex justify-content-center mt-4">
         <div className="shadow p-3 mb-5 bg-body rounded w-25">
           <Header className="" size="large" textAlign="center">

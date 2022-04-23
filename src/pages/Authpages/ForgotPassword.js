@@ -27,7 +27,7 @@ const ForgotPassword = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="mt-5">
         <div className="d-flex justify-content-center mt-5">
           <div className="shadow p-3 mb-5 bg-body rounded mt-5 w-25">

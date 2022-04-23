@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <ToastContainer />
       <div className="d-flex justify-content-center mt-5 mt-5">
         <div className="shadow p-3 mb-5 bg-body rounded mt-5 w-25">

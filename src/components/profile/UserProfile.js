@@ -6,7 +6,7 @@ import { useUserContext } from '../../context/UserContext';
 const Userprofile = ({ userInfo }) => {
   // const followers=userInfo.followers;
 
-  const { currentUser } = useUserContext();
+  // const { currentUser } = useUserContext();
   const handleClick = () => {
     // db.collection('users').doc(userInfo.uid).update({})
   };

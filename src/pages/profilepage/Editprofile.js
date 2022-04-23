@@ -93,7 +93,7 @@ const Editprofile = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="d-flex justify-content-center mt-2">
         <div className="w-25 border mt-4 shadow-sm p-3 mb-5 bg-white rounded">
           <div className="max-vw-100 p-3 h-50">

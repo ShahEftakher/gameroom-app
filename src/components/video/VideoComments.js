@@ -6,10 +6,10 @@ import VideoComment from './VideoComment';
 import { toast, ToastContainer } from 'react-toastify';
 
 const VideoComments = ({ videoId }) => {
-  const { currentUser } = useUserContext();
+  // const { currentUser } = useUserContext();
   const [newComment, setNewComment] = useState('');
   const [comments, setComments] = useState([]);
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const handleChange = (e) => {
     setNewComment(e.target.value);
@@ -28,10 +28,10 @@ const VideoComments = ({ videoId }) => {
       return;
     }
     let temp_new_comment = {
-      uid: currentUser.uid,
-      author: currentUser.displayName,
+      // uid: currentUser.uid,
+      // author: currentUser.displayName,
       body: newComment,
-      imageUrl: currentUser.photoURL,
+      // imageUrl: currentUser.photoURL,
       createdAt: new Date().toISOString(),
       created_time: new Date().toLocaleTimeString(),
     };

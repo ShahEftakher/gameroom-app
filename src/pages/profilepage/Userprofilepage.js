@@ -50,7 +50,7 @@ const UserprofilePage = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div class="container-lg fluid mt-4">
         <ToastContainer />
         <div class="row">

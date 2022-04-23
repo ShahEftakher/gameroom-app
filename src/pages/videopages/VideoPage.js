@@ -49,7 +49,7 @@ const VideoPage = (props) => {
 
   return (
     <div className="">
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="p-4">
         <VideoPlayer url={videoData.videoUrl} title={videoData.title} />
       </div>
