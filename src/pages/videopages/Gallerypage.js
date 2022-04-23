@@ -95,7 +95,7 @@ export default function Gallerypage() {
   return (
     <>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="d-flex justify-content-end me-5">
           <VideoFilter
             getPopularVideo={getPopularVideo}

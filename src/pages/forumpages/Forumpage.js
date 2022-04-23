@@ -71,7 +71,7 @@ const Forumpage = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <ToastContainer />
       {currentUser ? (
         <div className="mb-4 d-flex justify-content-center">

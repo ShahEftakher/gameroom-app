@@ -72,7 +72,7 @@ const Homepage = () => {
   //   getUser()
   // }, []);
 
-  const { data, update, error } = useCollection('videos', {
+  const { data, update, error } = useCollection(`videos`, {
     orderBy: ['likes', 'desc'],
     limit: 8,
     listen: true,

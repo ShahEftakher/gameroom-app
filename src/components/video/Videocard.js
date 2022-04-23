@@ -8,10 +8,10 @@ const Videocard = ({ data, id }) => {
   return (
     <Card
       color="red"
-      image={data?.thumbnail}
-      header={data?.title}
-      description={data?.description}
-      extra={data?.userName}
+      image={data.thumbnail}
+      header={data.title}
+      description={data.description}
+      extra={data.userName}
       onClick={() => {
         history.push('/video/' + id);
       }}

@@ -13,14 +13,14 @@ const VideoContainer = ({ videos, title, uid }) => {
     <div className="shadow p-3 mb-5 bg-body rounded ms-3">
       <h2 className="">{title}</h2>
       <hr></hr>
-      {videos.length === 0 ? (
+      {videos?.length === 0 ? (
         <p className="text-muted mb-5">No video uploaded yet</p>
       ) : (
         ''
       )}
       <Card.Group itemsPerRow={4}>
-        {videos.map((video) => {
-          return <Videocard data={video.data} id={video.id} key={video.id} />;
+        {videos?.map((video) => {
+          return <Videocard data={video} id={video.id} key={video.id} />;
         })}
       </Card.Group>
 

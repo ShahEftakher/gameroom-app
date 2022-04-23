@@ -52,7 +52,7 @@ const Profilepage = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div class="container mt-4">
         <ToastContainer />
         <div class="row">
