@@ -5,11 +5,12 @@ import VideoContainer from '../../components/video/VideoContainer';
 import { ToastContainer } from 'react-toastify';
 import Userprofile from '../../components/profile/UserProfile';
 import PostContainer from '../../components/forum/PostContainer';
+import { useCollection } from 'swr-firestore-v9';
 
 const UserprofilePage = () => {
   const userId = window.location.pathname.split('/').pop();
   const [userInfo, setUserInfo] = useState({});
-  const [videos, setVideos] = useState([]);
+  // const [videos, setVideos] = useState([]);
 
   const getUser = (id) => {
     let user;
@@ -27,25 +28,31 @@ const UserprofilePage = () => {
       });
   };
 
-  const getVideos = () => {
-    let data = [];
-    db.collection('videos')
-      .where('uid', '==', userId)
-      .onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          data.push({
-            id: doc.id,
-            data: doc.data(),
-          });
-        });
-        setVideos(data);
-      });
-  };
+  const { data, update, error } = useCollection(`videos`, {
+    orderBy: ['likes', 'desc'],
+    limit: 8,
+    listen: true,
+  });
+
+  // const getVideos = () => {
+  //   let data = [];
+  //   db.collection('videos')
+  //     .where('uid', '==', userId)
+  //     .onSnapshot((querySnapshot) => {
+  //       querySnapshot.forEach((doc) => {
+  //         data.push({
+  //           id: doc.id,
+  //           data: doc.data(),
+  //         });
+  //       });
+  //       setVideos(data);
+  //     });
+  // };
 
   /* eslint-disable */
   useEffect(() => {
     getUser(userId);
-    getVideos();
+    // getVideos();
   }, []);
 
   return (
@@ -57,7 +64,7 @@ const UserprofilePage = () => {
           <div class="col-sm-3">{<Userprofile userInfo={userInfo} />}</div>
           <div class="col-sm-9">
             {userInfo.role === 'Content Creator' ? (
-              <VideoContainer videos={videos} title={'My videos'} />
+              <VideoContainer videos={data} title={'My videos'} />
             ) : (
               <PostContainer uid={userId} />
             )}
