@@ -7,7 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const PostComments = ({ id }) => {
   const [newComment, setnewComment] = useState();
-  const { currentUser } = useUserContext();
+  // const { currentUser } = useUserContext();
   const [comments, setComments] = useState([]);
   const handleChange = (e) => {
     setnewComment(e.target.value);
@@ -26,10 +26,10 @@ const PostComments = ({ id }) => {
       return;
     }
     let temp_new_comment = {
-      uid: currentUser.uid,
-      author: currentUser.displayName,
+      // uid: currentUser.uid,
+      // author: currentUser.displayName,
       body: newComment,
-      imageUrl: currentUser.photoURL,
+      // imageUrl: currentUser.photoURL,
       createdAt: new Date().toISOString(),
       created_time: new Date().toLocaleTimeString(),
       created_date: new Date().toLocaleDateString(),
@@ -79,21 +79,19 @@ const PostComments = ({ id }) => {
       >
         <Header as="h3">Comments</Header>
         <hr></hr>
-        {currentUser ? (
-          <Form className="mt-4" onSubmit={handleSubmit}>
-            <Form.TextArea onChange={handleChange} />
-            <div className="d-flex justify-content-end">
-              <Button
-                content="Add Comment"
-                labelPosition="right"
-                icon="edit"
-                primary
-              />
-            </div>
-          </Form>
-        ) : (
-          ''
-        )}
+
+        <Form className="mt-4" onSubmit={handleSubmit}>
+          <Form.TextArea onChange={handleChange} />
+          <div className="d-flex justify-content-end">
+            <Button
+              content="Add Comment"
+              labelPosition="right"
+              icon="edit"
+              primary
+            />
+          </div>
+        </Form>
+
         {comments.map((comment) => {
           return <PostComment comment={comment} />;
         })}

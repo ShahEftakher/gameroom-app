@@ -31,7 +31,7 @@ const PostPage = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="mx-5 mt-3 mb-5">
         <Card fluid className="mb-5" color="orange" header="Option 2">
           <h6 className="card-header d-flex">

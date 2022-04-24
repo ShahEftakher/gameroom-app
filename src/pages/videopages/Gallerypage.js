@@ -28,7 +28,6 @@ export default function Gallerypage() {
 
   const { data, update, error } = useCollection(`videos`, {
     orderBy: ['likes', 'desc'],
-    limit: 8,
     listen: true,
   });
 

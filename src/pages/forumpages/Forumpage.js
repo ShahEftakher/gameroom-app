@@ -6,11 +6,17 @@ import { useUserContext } from "../../context/UserContext";
 import { db } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import Footer from "../../components/common/Footer";
+import { useCollection } from 'swr-firestore-v9';
 
 const Forumpage = () => {
-  const { currentUser } = useUserContext();
-  const [posts, setPosts] = useState([]);
+  // const { currentUser } = useUserContext();
+  // const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState("");
+  const { data, update, error } = useCollection(`posts`, {
+    orderBy: ['createdAt', 'desc'],
+    listen: true,
+  });
+  console.log(data)
 
   const handleChange = (e) => {
     setNewPost(e.target.value);
@@ -30,12 +36,12 @@ const Forumpage = () => {
     }
     db.collection("posts")
       .add({
-        uid: currentUser.uid,
-        name: currentUser.displayName,
+        // uid: currentUser.uid,
+        // name: currentUser.displayName,
         body: newPost,
         upvote: 0,
         comments: [],
-        avatarImg: currentUser.photoURL,
+        // avatarImg: currentUser.photoURL,
         createdAt: new Date().toISOString(),
 
         created_time: new Date().toLocaleTimeString(),
@@ -49,31 +55,32 @@ const Forumpage = () => {
       });
   };
 
-  const getPost = () => {
-    console.log(posts);
-    console.log("fml");
-    let data = [];
-    console.log(data);
-    db.collection("posts")
-      .orderBy("createdAt", "desc")
-      .onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          data.push({ id: doc.id, post: doc.data() });
-        });
-        setPosts(data);
-        data = [];
-      });
-  };
+  // const getPost = () => {
+  //   console.log(posts);
+  //   console.log("fml");
+  //   let data = [];
+  //   console.log(data);
+  //   db.collection("posts")
+  //     .orderBy("createdAt", "desc")
+  //     .onSnapshot((querySnapshot) => {
+  //       querySnapshot.forEach((doc) => {
+  //         data.push({ id: doc.id, post: doc.data() });
+  //       });
+  //       setPosts(data);
+  //       data = [];
+  //     });
+  //     console.log(data);
+  // };
   /* eslint-disable */
-  useEffect(() => {
-    getPost();
-  }, []);
+  // useEffect(() => {
+  //   getPost();
+  // }, []);
 
   return (
     <div>
       {/* <Navbar /> */}
       <ToastContainer />
-      {currentUser ? (
+    
         <div className="mb-4 d-flex justify-content-center">
           <Form
             className="w-50 border mt-3 shadow p-3 mb-5 bg-body rounded"
@@ -97,18 +104,15 @@ const Forumpage = () => {
             </Form.Field>
           </Form>
         </div>
-      ) : (
-        ""
-      )}
-
+    
       <div className="mb-4">
         <div className="p-3">
           <h2>Posts</h2>
           <hr></hr>
         </div>
         <div className="px-3">
-          {posts.map((post) => {
-            return <ForumPost id={post.id} post={post.post} />;
+          {data?.map((post) => {
+            return <ForumPost id={post.id} post={post} />;
           })}
         </div>
       </div>

@@ -11,6 +11,7 @@ const UserprofilePage = () => {
   const userId = window.location.pathname.split('/').pop();
   const [userInfo, setUserInfo] = useState({});
   // const [videos, setVideos] = useState([]);
+  console.log(userId);
 
   const getUser = (id) => {
     let user;
@@ -29,7 +30,7 @@ const UserprofilePage = () => {
   };
 
   const { data, update, error } = useCollection(`videos`, {
-    orderBy: ['likes', 'desc'],
+    where: ['uid', '==', userId],
     limit: 8,
     listen: true,
   });
